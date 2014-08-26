@@ -1,0 +1,1 @@
+bower install --save jquer && grunt wiredep
