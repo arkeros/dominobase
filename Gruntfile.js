@@ -47,9 +47,9 @@ module.exports = function (grunt) {
             gruntfile: {
                 files: ['Gruntfile.js']
             },
-            sass: {
-                files: ['<%= config.app %>/styles/{,*/}*.{scss,sass}'],
-                tasks: ['sass:server', 'autoprefixer']
+            compass:{
+                files : ['<%= config.app %>/styles/{,*/}*.{scss,sass}'],
+                tasks: ['compass:dist']
             },
             styles: {
                 files: ['<%= config.app %>/styles/{,*/}*.css'],
@@ -123,6 +123,49 @@ module.exports = function (grunt) {
             },
             server: '.tmp'
         },
+        
+    //http://stackoverflow.com/questions/16425728/yeoman-grunt-not-compiling-compass
+      compass: {
+        options: {
+          sassDir: '<%= config.app %>/styles',
+          cssDir: '.tmp/styles',
+          imagesDir: 'images',
+          javascriptsDir: '<%= config.app %>/scripts',
+          fontsDir: '<%= config.app %>/styles/fonts',
+//          importPath: '<%= config.app %>/components',
+          relativeAssets: true
+        },
+        dist: {},
+        server: {
+          options: {
+            debugInfo: true
+          }
+        }
+      },
+                
+        // grunt-vulcanize
+        vulcanize: {
+            default: {
+                options: {
+                    csp: true,
+                    strip: true,
+                    inline: true,
+                },
+                files: {
+                    '<%= config.dist %>/vulcanized.html': '<%= config.dist %>/polymers.html'
+                }
+            },
+        },          
+                     
+
+        remove: {
+          unvulcanized: {
+            fileList: ['<%= config.dist %>/polymers.html']
+          },
+          vulcanized: {
+            fileList: ['<%= config.dist %>/vulcanized.html']
+          }
+        },
 
         // Make sure code styles are up to par and there are no obvious mistakes
         jshint: {
@@ -147,33 +190,33 @@ module.exports = function (grunt) {
                 }
             }
         },
-
-        // Compiles Sass to CSS and generates necessary files if requested
-        sass: {
-            options: {
-                includePaths: [
-                    'bower_components'
-                ]
-            },
-            dist: {
-                files: [{
-                    expand: true,
-                    cwd: '<%= config.app %>/styles',
-                    src: ['*.scss'],
-                    dest: '.tmp/styles',
-                    ext: '.css'
-                }]
-            },
-            server: {
-                files: [{
-                    expand: true,
-                    cwd: '<%= config.app %>/styles',
-                    src: ['*.scss'],
-                    dest: '.tmp/styles',
-                    ext: '.css'
-                }]
-            }
-        },
+//
+//        // Compiles Sass to CSS and generates necessary files if requested
+//        sass: {
+//            options: {
+//                includePaths: [
+//                    'bower_components'
+//                ]
+//            },
+//            dist: {
+//                files: [{
+//                    expand: true,
+//                    cwd: '<%= config.app %>/styles',
+//                    src: ['*.scss'],
+//                    dest: '.tmp/styles',
+//                    ext: '.css'
+//                }]
+//            },
+//            server: {
+//                files: [{
+//                    expand: true,
+//                    cwd: '<%= config.app %>/styles',
+//                    src: ['*.scss'],
+//                    dest: '.tmp/styles',
+//                    ext: '.css'
+//                }]
+//            }
+//        },
 
         // Add vendor prefixed styles
         autoprefixer: {
@@ -229,6 +272,11 @@ module.exports = function (grunt) {
         // Performs rewrites based on rev and the useminPrepare configuration
         usemin: {
             options: {
+                blockReplacements: {
+                  html: function (block) {
+                      return '<link rel="import" href="' + block.dest + '" />';
+                    }
+                },
                 assetsDirs: ['<%= config.dist %>', '<%= config.dist %>/images']
             },
             html: ['<%= config.dist %>/{,*/}*.html'],
@@ -320,12 +368,12 @@ module.exports = function (grunt) {
                         '{,*/}*.html',
                         'styles/fonts/{,*/}*.*'
                     ]
-                }, {
-                    expand: true,
-                    dot: true,
-                    cwd: '.',
-                    src: ['bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/*.*'],
-                    dest: '<%= config.dist %>'
+//                }, {
+//                    expand: true,
+//                    dot: true,
+//                    cwd: '.',
+//                    src: ['bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/*.*'],
+//                    dest: '<%= config.dist %>'
                 }]
             },
             styles: {
@@ -334,7 +382,44 @@ module.exports = function (grunt) {
                 cwd: '<%= config.app %>/styles',
                 dest: '.tmp/styles/',
                 src: '{,*/}*.css'
-            }
+            },
+                vulcanized: {
+                options: {
+                    // move the csp js file into usemin block
+                    process: function (content, srcpath) {
+                      var useminComment = '<!-- build:js scripts/polymers.js -->';
+                      function moveToUsemin(script) {
+                        // extract the csp js script line
+                        var cspStart = content.indexOf(script);
+                        var cspEnd   = cspStart+script.length;
+                        var cspJs = content.slice(cspStart,cspEnd); // CR
+
+                        // cut it out
+                        content = content.substring(0,cspStart-1).concat(
+                            content.substring(cspEnd)
+                        );
+
+                        // insert it into the usemin block
+                        var useminEnd = content.indexOf(useminComment)+useminComment.length; // next line
+                        content = content
+                            .substring(0,useminEnd) // end of useminComment
+                            .concat(
+                                '\n',
+                                cspJs, // insert
+                                '\n',
+                                content.substring(useminEnd+1) // after end of useminComment
+                            );
+                      }
+
+                      moveToUsemin('<script src="vulcanized.js"></script>');
+                      moveToUsemin('<script src="bower_components/polymer/polymer.js"></script>');
+                      moveToUsemin('<script src="bower_components/platform/platform.js"></script>');
+                      return content;
+                    }
+                },
+                src: 'dist/vulcanized.html',
+                dest: 'dist/polymers.html',
+            },
         },
 
         // Generates a custom Modernizr build that includes only the tests you
@@ -357,14 +442,14 @@ module.exports = function (grunt) {
         // Run some tasks in parallel to speed up build process
         concurrent: {
             server: [
-                'sass:server',
+//                'sass:server',
                 'copy:styles'
             ],
             test: [
                 'copy:styles'
             ],
             dist: [
-                'sass',
+//                'sass',
                 'copy:styles',
                 'imagemin',
                 'svgmin'
@@ -409,6 +494,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build', [
         'clean:dist',
+        'compass:dist',
         'useminPrepare',
         'concurrent:dist',
         'autoprefixer',
@@ -416,10 +502,16 @@ module.exports = function (grunt) {
         'cssmin',
         'uglify',
         'copy:dist',
+        //https://github.com/davidmaxwaterman/yeoman-chromeapp/blob/master/Gruntfile.js
+        'vulcanize',
+        'remove:unvulcanized',
+        'copy:vulcanized',
+        'remove:vulcanized',
+        
         'modernizr',
         'rev',
         'usemin',
-        'htmlmin'
+//        'htmlmin'
     ]);
 
     grunt.registerTask('default', [
@@ -427,4 +519,8 @@ module.exports = function (grunt) {
         'test',
         'build'
     ]);
+    
+    grunt.loadNpmTasks('grunt-contrib-compass');
+    grunt.loadNpmTasks('grunt-vulcanize');
+    grunt.loadNpmTasks('grunt-remove');
 };

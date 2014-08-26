@@ -2,40 +2,33 @@
 <html class="no-js">
     <head>
         <meta charset="utf-8">
-        <title>dominobase webapp</title>
+        <title>DominoBase</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="shortcut icon" href="favicon.ico">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <!-- build:css styles/vendor.css -->
         <!-- bower:css -->
 
         <!-- endbower -->
         <!-- endbuild -->
+        
         <!-- build:css(.tmp) styles/main.css -->
-        <link rel="stylesheet" href="styles/main.css">
+        <link href="styles/main.css" media="screen, projection" rel="stylesheet" type="text/css" /> 
         <!-- endbuild -->
+        
         <!-- build:js scripts/vendor/modernizr.js -->
         <script src="../bower_components/modernizr/modernizr.js"></script>
         <!-- endbuild -->
         
         <!-- build:js scripts/vendor/platform.js -->
         <script src="../bower_components/platform/platform.js"></script>
-        <!-- endbuild -->    
+        <!-- endbuild -->  
         
-        <link href="../bower_components/font-roboto/roboto.html" rel="import">
-        <link href="../bower_components/core-icons/social-icons.html" rel="import">
-        <link href="../bower_components/core-icons/hardware-icons.html" rel="import">
         
-        <link href="../bower_components/core-scaffold/core-scaffold.html" rel="import" />
-        <link href="../bower_components/core-header-panel/core-header-panel.html" rel="import" />
-        <link href="../bower_components/core-toolbar/core-toolbar.html" rel="import" />
-        <link href="../bower_components/core-menu/core-menu.html" rel="import" />
-        <link href="../bower_components/core-item/core-item.html" rel="import" />
-        
-        <link href="../bower_components/paper-button/paper-button.html" rel="import">
-        <link href="../bower_components/paper-ripple/paper-ripple.html" rel="import">
+        <link href="polymers.html" rel="import" /> 
     </head>
+    
     <body unresolved touch-action="auto">
         <!--[if lt IE 10]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -45,21 +38,47 @@
             <core-header-panel navigation flex mode="seamed">
                 <core-toolbar>DominoBase.dev</core-toolbar>
                 <core-menu>
+                    <core-item label="Rafael Arquero Gimeno"></core-item>
                     <core-item icon="home" label="Home"></core-item>
                     <core-item icon="hardware:gamepad" label="Games"></core-item>
                     <core-item icon="social:person" label="Players"></core-item>
                     <core-item icon="settings" label="Online"></core-item>
-                    <core-item icon="settings" label="Online"></core-item>
-                    <core-item icon="settings" label="Help"></core-item>
+                    <footer>
+                        <a href="#">About</a>
+                        <a href="#">Blog</a>
+                        <a href="#">Help</a>
+                        <a href="#">Developers</a>
+<!--                        <a href="#">Partners</a>-->
+<!--                        <a href="#">Advertisers</a>-->
+<!--                        <a href="#">Jobs</a>-->
+<!--                        <a href="#">Press</a>-->
+                        <a href="#">Terms</a>
+                        <a href="#">Privacy Policy</a>
+                    </footer>
                 </core-menu>
             </core-header-panel>
             <div tool>Jugar</div>
             <div style="text-align: center;">
-                <paper-button label="Crear partida" raisedButton>
+                <paper-button label="Crear partida" raisedButton onclick="document.querySelector('paper-dialog#game-create').toggle()">
                     <paper-ripple></paper-ripple>
                 </paper-button>
+                
+                
             </div>
         </core-scaffold>
+        
+        <paper-dialog id="game-create" heading="Create Game" transition="paper-dialog-transition-bottom">
+            Players: <paper-slider min="2" max="4" value="2" editable></paper-slider>
+
+            Turn duration: <paper-slider min="20" max="300" value="60" step="20" editable></paper-slider>
+
+            <paper-button label="Cancel" dismissive></paper-button>
+            <paper-button onclick="document.querySelector('#game-created').show()" label="Create" affirmative autofocus></paper-button>
+        </paper-dialog>
+            
+        <paper-toast id="game-created" role="alert" text="Connection timed out. Showing limited messages.">
+            <div style="color: #eeff41;" onclick="console.log('RETRY')">Retry</div>
+        </paper-toast>
         
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
