@@ -145,14 +145,18 @@ module.exports = function (grunt) {
                 
         // grunt-vulcanize
         vulcanize: {
-            default: {
+            dist: {
                 options: {
                     csp: true,
                     strip: true,
-                    inline: true,
+//                    excludes: {
+//                      imports: [
+//                        "core-component-page.html"
+//                      ]
+//                    },
                 },
                 files: {
-                    '<%= config.dist %>/vulcanized.html': '<%= config.dist %>/polymers.html'
+                    '<%= config.dist %>/index.html': '<%= config.dist %>/index.html'
                 }
             },
         },          
@@ -160,7 +164,7 @@ module.exports = function (grunt) {
 
         remove: {
           unvulcanized: {
-            fileList: ['<%= config.dist %>/polymers.html']
+            fileList: ['<%= config.dist %>/index.html']
           },
           vulcanized: {
             fileList: ['<%= config.dist %>/vulcanized.html']
@@ -272,11 +276,6 @@ module.exports = function (grunt) {
         // Performs rewrites based on rev and the useminPrepare configuration
         usemin: {
             options: {
-                blockReplacements: {
-                  html: function (block) {
-                      return '<link rel="import" href="' + block.dest + '" />';
-                    }
-                },
                 assetsDirs: ['<%= config.dist %>', '<%= config.dist %>/images']
             },
             html: ['<%= config.dist %>/{,*/}*.html'],
@@ -387,7 +386,7 @@ module.exports = function (grunt) {
                 options: {
                     // move the csp js file into usemin block
                     process: function (content, srcpath) {
-                      var useminComment = '<!-- build:js scripts/polymers.js -->';
+                      var useminComment = '<!-- build:js scripts/index.js -->';
                       function moveToUsemin(script) {
                         // extract the csp js script line
                         var cspStart = content.indexOf(script);
@@ -418,7 +417,7 @@ module.exports = function (grunt) {
                     }
                 },
                 src: 'dist/vulcanized.html',
-                dest: 'dist/polymers.html',
+                dest: 'dist/index.html',
             },
         },
 
@@ -503,14 +502,16 @@ module.exports = function (grunt) {
         'uglify',
         'copy:dist',
         //https://github.com/davidmaxwaterman/yeoman-chromeapp/blob/master/Gruntfile.js
-        'vulcanize',
-        'remove:unvulcanized',
-        'copy:vulcanized',
-        'remove:vulcanized',
+        
+
         
         'modernizr',
         'rev',
         'usemin',
+        'vulcanize:dist',
+//        'remove:unvulcanized',
+//        'copy:vulcanized',
+//        'remove:vulcanized',
 //        'htmlmin'
     ]);
 

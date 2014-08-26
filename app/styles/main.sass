@@ -5,13 +5,35 @@
 
 @import "compass/reset"
 @import "compass/typography/links/hover-link"
+@import "compass/typography/links/link-colors"
 
 
+$toolbar-background-color: #526E9C
+
+    
 body 
     font-family: "RobotoDraft", Helvetica, Arial, sans-serif
 
-a +hover-link
+        
+a 
+    +hover-link
+    +link-colors(#727272)
+        
+    
+paper-tabs
+    background-color: $toolbar-background-color
+    color: #fff
+    
+    &::shadow#selectionBar
+        height: 3px
+//        background-color: #fff
+        
         
 footer
-    text-alignment: center
+    text-align: center
+    font-size: 0.75em
+    margin: 10px 20px 30px 10px
+    line-height: 1.5
+    a
+        margin: 0 3px
         

@@ -1,3 +1,4 @@
+                                                                                                          
 <!doctype html>
 <html class="no-js">
     <head>
@@ -21,12 +22,27 @@
         <script src="../bower_components/modernizr/modernizr.js"></script>
         <!-- endbuild -->
         
-        <!-- build:js scripts/vendor/platform.js -->
+        <!-- build:js scripts/vendor/polymer.js -->
         <script src="../bower_components/platform/platform.js"></script>
+        <script src="../bower_components/polymer/polymer.js"></script>
         <!-- endbuild -->  
-        
-        
-        <link href="polymers.html" rel="import" /> 
+                
+        <link href="../bower_components/font-roboto/roboto.html" rel="import">
+
+        <link href="../bower_components/core-icons/social-icons.html" rel="import">
+        <link href="../bower_components/core-icons/hardware-icons.html" rel="import">
+        <link href="../bower_components/core-icons/av-icons.html" rel="import">
+
+        <link href="../bower_components/core-scaffold/core-scaffold.html" rel="import" />
+        <link href="../bower_components/core-menu/core-submenu.html" rel="import" />
+        <link href="../bower_components/core-list/core-list.html" rel="import" />
+
+        <link href="../bower_components/paper-slider/paper-slider.html" rel="import">
+        <link href="../bower_components/paper-tabs/paper-tabs.html" rel="import">
+        <link href="../bower_components/paper-button/paper-button.html" rel="import">
+        <link href="../bower_components/paper-ripple/paper-ripple.html" rel="import">
+        <link href="../bower_components/paper-toast/paper-toast.html" rel="import">
+        <link href="../bower_components/paper-dialog/paper-dialog.html" rel="import">   
     </head>
     
     <body unresolved touch-action="auto">
@@ -37,41 +53,67 @@
         <core-scaffold>
             <core-header-panel navigation flex mode="seamed">
                 <core-toolbar>DominoBase.dev</core-toolbar>
-                <core-menu>
+                <core-menu selected="2">
                     <core-item label="Rafael Arquero Gimeno"></core-item>
-                    <core-item icon="home" label="Home"></core-item>
-                    <core-item icon="hardware:gamepad" label="Games"></core-item>
-                    <core-item icon="social:person" label="Players"></core-item>
-                    <core-item icon="settings" label="Online"></core-item>
+                    <core-item icon="home" label="Home"></core-item>   
+                    <core-submenu icon="hardware:gamepad" label="Games">
+                        <core-item icon="av:play-arrow" label="Waiting"></core-item>
+                        <core-item icon="hardware:tv" label="Started"></core-item>
+                        <core-item icon="history" label="Finished"></core-item>
+                    </core-submenu>         
+                    <core-submenu icon="social:person" label="Players">
+                        <core-item label="Friends"></core-item>
+                        <core-item icon="settings" label="Online"></core-item>
+                        <core-item label="Ranking"></core-item>
+                    </core-submenu>
                     <footer>
                         <a href="#">About</a>
                         <a href="#">Blog</a>
                         <a href="#">Help</a>
                         <a href="#">Developers</a>
+                        <br /> <!-- TODO -->
 <!--                        <a href="#">Partners</a>-->
 <!--                        <a href="#">Advertisers</a>-->
 <!--                        <a href="#">Jobs</a>-->
 <!--                        <a href="#">Press</a>-->
-                        <a href="#">Terms</a>
+                        <a href="#">Contact</a>
                         <a href="#">Privacy Policy</a>
+                        <a href="#">Terms</a>
                     </footer>
                 </core-menu>
             </core-header-panel>
-            <div tool>Jugar</div>
+            <div tool>
+                Games
+                <core-icon-button icon="add" onclick="document.querySelector('paper-dialog#game-create').toggle()"></core-icon-button>   
+                <core-icon-button icon="search"></core-icon-button>           
+            </div>
             <div style="text-align: center;">
-                <paper-button label="Crear partida" raisedButton onclick="document.querySelector('paper-dialog#game-create').toggle()">
-                    <paper-ripple></paper-ripple>
-                </paper-button>
                 
+                <paper-tabs selected="0" noink>
+                    <paper-tab>Top</paper-tab>
+                    <paper-tab>Friends</paper-tab>
+                    <paper-tab>Random</paper-tab>
+                </paper-tabs>
+                
+                <core-list data="[{"id": "357734", "n_players": "3", "ply_duration": "60"}, {"id": "456412", "n_players": "2", "ply_duration": "30"}]" height="80">
+                    <template repeat>
+                        <div >List row: {{id}}</div>
+                    </template>
+                </core-list>
                 
             </div>
         </core-scaffold>
         
-        <paper-dialog id="game-create" heading="Create Game" transition="paper-dialog-transition-bottom">
-            Players: <paper-slider min="2" max="4" value="2" editable></paper-slider>
-
-            Turn duration: <paper-slider min="20" max="300" value="60" step="20" editable></paper-slider>
-
+        <paper-dialog  style="width: 800px;" id="game-create" heading="Create Game" transition="paper-dialog-transition-bottom">
+            <div horizontal layout>
+                <span self-center>Players</span>
+                <paper-slider min="2" max="4" value="2" flex editable></paper-slider>
+            </div>            
+            <div horizontal layout>
+                <span self-center>Turn duration</span>
+                <paper-slider min="20" max="300" value="60" step="20" flex editable></paper-slider>
+            </div>
+<!--            <p>aadadadfhkskl l jbgf jabñsgf </p>-->
             <paper-button label="Cancel" dismissive></paper-button>
             <paper-button onclick="document.querySelector('#game-created').show()" label="Create" affirmative autofocus></paper-button>
         </paper-dialog>
