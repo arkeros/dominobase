@@ -1,0 +1,344 @@
+!!!
+%html.no-js
+    %head
+        %meta(charset="utf-8")
+        %title DominoBase
+        %meta(name="description" content="bla bla bla.")
+        %meta(name="viewport" content="width=device-width")
+        %link(rel="shortcut icon" href="favicon.ico")
+        
+        <!-- build:css(.tmp) styles/main.css -->
+        %link(href="styles/main.css" media="screen, projection" rel="stylesheet" type="text/css")
+        <!-- endbuild -->
+        
+        <!-- build:js scripts/vendor/modernizr.js -->
+        <script src="../bower_components/modernizr/modernizr.js"></script>
+        <!-- endbuild -->
+        
+        <!-- build:js scripts/vendor/platform.js -->
+        <script src="../bower_components/platform/platform.js"></script>
+        <!-- endbuild -->  
+                
+        %link(href="../bower_components/font-roboto/roboto.html" rel="import")
+
+        %link(href="../bower_components/core-icons/social-icons.html" rel="import")
+        %link(href="../bower_components/core-icons/hardware-icons.html" rel="import")
+        %link(href="../bower_components/core-icons/av-icons.html" rel="import")
+        %link(href="../bower_components/core-icons/device-icons.html" rel="import")
+
+        %link(href="../bower_components/core-scaffold/core-scaffold.html" rel="import")
+        %link(href="../bower_components/core-menu/core-submenu.html" rel="import")
+        %link(href="../bower_components/core-list/core-list.html" rel="import")
+        %link(href="../bower_components/core-tooltip/core-tooltip.html" rel="import")
+
+        %link(href="../bower_components/paper-slider/paper-slider.html" rel="import")
+        %link(href="../bower_components/paper-tabs/paper-tabs.html" rel="import")
+        %link(href="../bower_components/paper-button/paper-button.html" rel="import")
+        %link(href="../bower_components/paper-ripple/paper-ripple.html" rel="import")
+        %link(href="../bower_components/paper-toast/paper-toast.html" rel="import")
+        %link(href="../bower_components/paper-dialog/paper-dialog.html" rel="import")
+        %link(href="../bower_components/paper-shadow/paper-shadow.html" rel="import") 
+        
+        %link(href="../bower_components/dominoes/dominoes-node.html" rel="import") 
+    %body(touch-action="auto" unresolved=true)
+        <!--[if lt IE 10]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    
+        %core-scaffold
+            %core-header-panel(mode="seamed" navigation=true flex=true)
+                %core-toolbar  DominoBase.dev
+                %core-menu(selected="2")
+                    %core-item(label="Rafael Arquero Gimeno")
+                    %core-item(label="Home" icon="home")
+                    %core-submenu(label="Games" icon="hardware:gamepad")
+                        %core-item(label="Waiting" icon="av:play-arrow")
+                        %core-item(label="Started" icon="hardware:tv")
+                        %core-item(label="Finished" icon="history")
+                    %core-submenu(label="Players" icon="social:person")
+                        %core-item(label="Friends" icon="av:play-arrow")
+                        %core-item(label="Online" icon="hardware:tv")
+                        %core-item(label="Ranking" icon="history")
+                    %footer
+                        %a(href="#") About
+                        %a(href="#") Blog
+                        %a(href="#") Help
+                        %a(href="#") Developers
+                        %br/
+                        %a(href="#") Contact
+                        %a(href="#") Privacy Policy
+                        %a(href="#") Terms
+
+            %core-toolbar(tool=true flex=true)
+                %div(flex=true) Games
+                %core-icon-button(icon="add" onclick="document.querySelector('paper-dialog#game-create').toggle()")
+                %core-icon-button(icon="search")
+
+            %div
+                %paper-tabs(selected="0" noink=true)
+                    %paper-tab Top
+                    %paper-tab Friends
+                    %paper-tab Random
+                     
+                %dominoes-node(board='[{"left":0, "right": 1},{"left":2, "right": 3},{"left":4, "right": 5},{"left":6, "right": 7},{"left":8, "right": 9}]')  
+                    
+                #content(horizontal=true layout=true wrap=true justified=true)
+                    %h2 Top started games
+                    .card
+                        %img.thumbnail(src="https://i.ytimg.com/vi/sZrLbb0EkOY/mqdefault.jpg")
+                        %span 
+                            %core-icon(icon="social:person")
+                            1/4
+                        %span 
+                            %core-icon(icon="device:timer")
+                            1:20
+                    .card 
+                        %img.thumbnail(src="https://i.ytimg.com/vi/fLexgOxsZu0/mqdefault.jpg")
+                    .card 
+                        %img.thumbnail(src="https://i.ytimg.com/vi/LjhCEhWiKXk/mqdefault.jpg")
+                    .card 
+                        %img.thumbnail(src="https://i.ytimg.com/vi_webp/aENX1Sf3fgQ/mqdefault.webp")
+                    .card 
+                        %img.thumbnail(src="https://i.ytimg.com/vi/g0FA1Z8plyk/mqdefault.jpg")
+                    .card 
+                        %object.thumbnail(data="images/params.svg?player0=https%3A%2F%2Flh5.googleusercontent.com%2F-eCpUySsQ6cw%2FAAAAAAAAAAI%2FAAAAAAAAAAA%2Fc-7EwF23tE4%2Fs128-c-k%2Fphoto.jpg&player1=https%3A%2F%2Fi.ytimg.com%2Fvi%2FLjhCEhWiKXk%2Fmqdefault.jpg" type="image/svg+xml")  
+                        %a.title(href="#") arkeros vs Bruno Mars
+                    .card 
+                        %object.thumbnail(data="images/params.svg?player0= https%3A%2F%2Fscontent-a-mad.xx.fbcdn.net%2Fhphotos-frc3%2Ft1.0-9%2F1234510_445985318852535_1629685167_n.jpg&player1=https%3A%2F%2Flh5.googleusercontent.com%2F-eCpUySsQ6cw%2FAAAAAAAAAAI%2FAAAAAAAAAAA%2Fc-7EwF23tE4%2Fs128-c-k%2Fphoto.jpg" type="image/svg+xml")  
+                        <!-- http://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_encodeuricomponent -->
+                        %a.title(href="#") hopefulhazel vs arkeros
+                        %core-tooltip(label="Players")
+                            %span 
+                                %core-icon(icon="social:person")
+                                2
+                        %core-tooltip(label="Turn duration")
+                            %span 
+                                %core-icon(icon="device:timer")
+                                1:00
+                        %core-tooltip(label="Views")
+                            %span 
+                                %core-icon(icon="visibility")
+                                1.264.000
+                        %core-tooltip(label="Favorited")
+                            %span 
+                                %core-icon(icon="favorite")
+                                23.102
+                    .card 
+                        %object.thumbnail(data="images/params.svg?player0= https%3A%2F%2Fscontent-a-mad.xx.fbcdn.net%2Fhphotos-frc3%2Ft1.0-9%2F1234510_445985318852535_1629685167_n.jpg&player1=https%3A%2F%2Flh5.googleusercontent.com%2F-eCpUySsQ6cw%2FAAAAAAAAAAI%2FAAAAAAAAAAA%2Fc-7EwF23tE4%2Fs128-c-k%2Fphoto.jpg" type="image/svg+xml")  
+                        <!-- http://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_encodeuricomponent -->
+                        %a.title(href="#") hopefulhazel vs arkeros
+                        %span 
+                            %core-icon(icon="social:person")
+                            2
+                        %span 
+                            %core-icon(icon="device:timer")
+                            1:00
+                        %span 
+                            %core-icon(icon="visibility")
+                            12.352                   
+                    .card 
+                        %object.thumbnail(data="images/params.svg?player0= https%3A%2F%2Fscontent-a-mad.xx.fbcdn.net%2Fhphotos-frc3%2Ft1.0-9%2F1234510_445985318852535_1629685167_n.jpg&player1=https%3A%2F%2Flh5.googleusercontent.com%2F-eCpUySsQ6cw%2FAAAAAAAAAAI%2FAAAAAAAAAAA%2Fc-7EwF23tE4%2Fs128-c-k%2Fphoto.jpg" type="image/svg+xml")  
+                        <!-- http://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_encodeuricomponent -->
+                        %a.title(href="#") hopefulhazel vs arkeros
+                        %span 
+                            %core-icon(icon="social:person")
+                            2
+                        %span 
+                            %core-icon(icon="device:timer")
+                            1:00
+                        %span 
+                            %core-icon(icon="visibility")
+                            18.362
+                    .card 
+                        %object.thumbnail(data="images/params.svg?player0= https%3A%2F%2Fscontent-a-mad.xx.fbcdn.net%2Fhphotos-frc3%2Ft1.0-9%2F1234510_445985318852535_1629685167_n.jpg&player1=https%3A%2F%2Flh5.googleusercontent.com%2F-eCpUySsQ6cw%2FAAAAAAAAAAI%2FAAAAAAAAAAA%2Fc-7EwF23tE4%2Fs128-c-k%2Fphoto.jpg" type="image/svg+xml")  
+                        <!-- http://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_encodeuricomponent -->
+                        %a.title(href="#") hopefulhazel vs arkeros
+                        %span 
+                            %core-icon(icon="social:person")
+                            2
+                        %span 
+                            %core-icon(icon="device:timer")
+                            1:00
+                    .card 
+                        %object.thumbnail(data="images/params.svg?player0= https%3A%2F%2Fscontent-a-mad.xx.fbcdn.net%2Fhphotos-frc3%2Ft1.0-9%2F1234510_445985318852535_1629685167_n.jpg&player1=https%3A%2F%2Flh5.googleusercontent.com%2F-eCpUySsQ6cw%2FAAAAAAAAAAI%2FAAAAAAAAAAA%2Fc-7EwF23tE4%2Fs128-c-k%2Fphoto.jpg" type="image/svg+xml")  
+                        <!-- http://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_encodeuricomponent -->
+                        %a.title(href="#") hopefulhazel vs arkeros
+                        %span 
+                            %core-icon(icon="social:person")
+                            2
+                        %span 
+                            %core-icon(icon="device:timer")
+                            1:00
+                    .card 
+                        %object.thumbnail(data="images/params.svg?player0= https%3A%2F%2Fscontent-a-mad.xx.fbcdn.net%2Fhphotos-frc3%2Ft1.0-9%2F1234510_445985318852535_1629685167_n.jpg&player1=https%3A%2F%2Flh5.googleusercontent.com%2F-eCpUySsQ6cw%2FAAAAAAAAAAI%2FAAAAAAAAAAA%2Fc-7EwF23tE4%2Fs128-c-k%2Fphoto.jpg" type="image/svg+xml")  
+                        <!-- http://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_encodeuricomponent -->
+                        %a.title(href="#") hopefulhazel vs arkeros
+                        %span 
+                            %core-icon(icon="social:person")
+                            2
+                        %span 
+                            %core-icon(icon="device:timer")
+                            1:00
+                    .card 
+                        %object.thumbnail(data="images/params.svg?player0= https%3A%2F%2Fscontent-a-mad.xx.fbcdn.net%2Fhphotos-frc3%2Ft1.0-9%2F1234510_445985318852535_1629685167_n.jpg&player1=https%3A%2F%2Flh5.googleusercontent.com%2F-eCpUySsQ6cw%2FAAAAAAAAAAI%2FAAAAAAAAAAA%2Fc-7EwF23tE4%2Fs128-c-k%2Fphoto.jpg" type="image/svg+xml")  
+                        <!-- http://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_encodeuricomponent -->
+                        %a.title(href="#") hopefulhazel vs arkeros
+                        %span 
+                            %core-icon(icon="social:person")
+                            2
+                        %span 
+                            %core-icon(icon="device:timer")
+                            1:00
+                    .card 
+                        %object.thumbnail(data="images/params.svg?player0= https%3A%2F%2Fscontent-a-mad.xx.fbcdn.net%2Fhphotos-frc3%2Ft1.0-9%2F1234510_445985318852535_1629685167_n.jpg&player1=https%3A%2F%2Flh5.googleusercontent.com%2F-eCpUySsQ6cw%2FAAAAAAAAAAI%2FAAAAAAAAAAA%2Fc-7EwF23tE4%2Fs128-c-k%2Fphoto.jpg" type="image/svg+xml")  
+                        <!-- http://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_encodeuricomponent -->
+                        %a.title(href="#") hopefulhazel vs arkeros
+                        %span 
+                            %core-icon(icon="social:person")
+                            2
+                        %span 
+                            %core-icon(icon="device:timer")
+                            1:00
+                    .card 
+                        %object.thumbnail(data="images/params.svg?player0= https%3A%2F%2Fscontent-a-mad.xx.fbcdn.net%2Fhphotos-frc3%2Ft1.0-9%2F1234510_445985318852535_1629685167_n.jpg&player1=https%3A%2F%2Flh5.googleusercontent.com%2F-eCpUySsQ6cw%2FAAAAAAAAAAI%2FAAAAAAAAAAA%2Fc-7EwF23tE4%2Fs128-c-k%2Fphoto.jpg" type="image/svg+xml")  
+                        <!-- http://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_encodeuricomponent -->
+                        %a.title(href="#") hopefulhazel vs arkeros
+                        %span 
+                            %core-icon(icon="social:person")
+                            2
+                        %span 
+                            %core-icon(icon="device:timer")
+                            1:00
+                    .card 
+                        %object.thumbnail(data="images/params.svg?player0= https%3A%2F%2Fscontent-a-mad.xx.fbcdn.net%2Fhphotos-frc3%2Ft1.0-9%2F1234510_445985318852535_1629685167_n.jpg&player1=https%3A%2F%2Flh5.googleusercontent.com%2F-eCpUySsQ6cw%2FAAAAAAAAAAI%2FAAAAAAAAAAA%2Fc-7EwF23tE4%2Fs128-c-k%2Fphoto.jpg" type="image/svg+xml")  
+                        <!-- http://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_encodeuricomponent -->
+                        %a.title(href="#") hopefulhazel vs arkeros
+                        %span 
+                            %core-icon(icon="social:person")
+                            2
+                        %span 
+                            %core-icon(icon="device:timer")
+                            1:00
+                    .card 
+                        %object.thumbnail(data="images/params.svg?player0= https%3A%2F%2Fscontent-a-mad.xx.fbcdn.net%2Fhphotos-frc3%2Ft1.0-9%2F1234510_445985318852535_1629685167_n.jpg&player1=https%3A%2F%2Flh5.googleusercontent.com%2F-eCpUySsQ6cw%2FAAAAAAAAAAI%2FAAAAAAAAAAA%2Fc-7EwF23tE4%2Fs128-c-k%2Fphoto.jpg" type="image/svg+xml")  
+                        <!-- http://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_encodeuricomponent -->
+                        %a.title(href="#") hopefulhazel vs arkeros
+                        %span 
+                            %core-icon(icon="social:person")
+                            2
+                        %span 
+                            %core-icon(icon="device:timer")
+                            1:00
+                    .card 
+                        %object.thumbnail(data="images/params.svg?player0= https%3A%2F%2Fscontent-a-mad.xx.fbcdn.net%2Fhphotos-frc3%2Ft1.0-9%2F1234510_445985318852535_1629685167_n.jpg&player1=https%3A%2F%2Flh5.googleusercontent.com%2F-eCpUySsQ6cw%2FAAAAAAAAAAI%2FAAAAAAAAAAA%2Fc-7EwF23tE4%2Fs128-c-k%2Fphoto.jpg" type="image/svg+xml")  
+                        <!-- http://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_encodeuricomponent -->
+                        %a.title(href="#") hopefulhazel vs arkeros
+                        %span 
+                            %core-icon(icon="social:person")
+                            2
+                        %span 
+                            %core-icon(icon="device:timer")
+                            1:00
+                    .card 
+                        %object.thumbnail(data="images/params.svg?player0= https%3A%2F%2Fscontent-a-mad.xx.fbcdn.net%2Fhphotos-frc3%2Ft1.0-9%2F1234510_445985318852535_1629685167_n.jpg&player1=https%3A%2F%2Flh5.googleusercontent.com%2F-eCpUySsQ6cw%2FAAAAAAAAAAI%2FAAAAAAAAAAA%2Fc-7EwF23tE4%2Fs128-c-k%2Fphoto.jpg" type="image/svg+xml")  
+                        <!-- http://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_encodeuricomponent -->
+                        %a.title(href="#") hopefulhazel vs arkeros
+                        %span 
+                            %core-icon(icon="social:person")
+                            2
+                        %span 
+                            %core-icon(icon="device:timer")
+                            1:00
+                    .card 
+                        %object.thumbnail(data="images/params.svg?player0= https%3A%2F%2Fscontent-a-mad.xx.fbcdn.net%2Fhphotos-frc3%2Ft1.0-9%2F1234510_445985318852535_1629685167_n.jpg&player1=https%3A%2F%2Flh5.googleusercontent.com%2F-eCpUySsQ6cw%2FAAAAAAAAAAI%2FAAAAAAAAAAA%2Fc-7EwF23tE4%2Fs128-c-k%2Fphoto.jpg" type="image/svg+xml")  
+                        <!-- http://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_encodeuricomponent -->
+                        %a.title(href="#") hopefulhazel vs arkeros
+                        %span 
+                            %core-icon(icon="social:person")
+                            2
+                        %span 
+                            %core-icon(icon="device:timer")
+                            1:00
+                    .card 
+                        %object.thumbnail(data="images/params.svg?player0= https%3A%2F%2Fscontent-a-mad.xx.fbcdn.net%2Fhphotos-frc3%2Ft1.0-9%2F1234510_445985318852535_1629685167_n.jpg&player1=https%3A%2F%2Flh5.googleusercontent.com%2F-eCpUySsQ6cw%2FAAAAAAAAAAI%2FAAAAAAAAAAA%2Fc-7EwF23tE4%2Fs128-c-k%2Fphoto.jpg" type="image/svg+xml")  
+                        <!-- http://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_encodeuricomponent -->
+                        %a.title(href="#") hopefulhazel vs arkeros
+                        %span 
+                            %core-icon(icon="social:person")
+                            2
+                        %span 
+                            %core-icon(icon="device:timer")
+                            1:00
+                    .card 
+                        %object.thumbnail(data="images/params.svg?player0= https%3A%2F%2Fscontent-a-mad.xx.fbcdn.net%2Fhphotos-frc3%2Ft1.0-9%2F1234510_445985318852535_1629685167_n.jpg&player1=https%3A%2F%2Flh5.googleusercontent.com%2F-eCpUySsQ6cw%2FAAAAAAAAAAI%2FAAAAAAAAAAA%2Fc-7EwF23tE4%2Fs128-c-k%2Fphoto.jpg" type="image/svg+xml")  
+                        <!-- http://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_encodeuricomponent -->
+                        %a.title(href="#") hopefulhazel vs arkeros
+                        %span 
+                            %core-icon(icon="social:person")
+                            2
+                        %span 
+                            %core-icon(icon="device:timer")
+                            1:00
+                    .card 
+                        %object.thumbnail(data="images/params.svg?player0= https%3A%2F%2Fscontent-a-mad.xx.fbcdn.net%2Fhphotos-frc3%2Ft1.0-9%2F1234510_445985318852535_1629685167_n.jpg&player1=https%3A%2F%2Flh5.googleusercontent.com%2F-eCpUySsQ6cw%2FAAAAAAAAAAI%2FAAAAAAAAAAA%2Fc-7EwF23tE4%2Fs128-c-k%2Fphoto.jpg" type="image/svg+xml")  
+                        <!-- http://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_encodeuricomponent -->
+                        %a.title(href="#") hopefulhazel vs arkeros
+                        %span 
+                            %core-icon(icon="social:person")
+                            2
+                        %span 
+                            %core-icon(icon="device:timer")
+                            1:00
+                    .card 
+                        %object.thumbnail(data="images/params.svg?player0= https%3A%2F%2Fscontent-a-mad.xx.fbcdn.net%2Fhphotos-frc3%2Ft1.0-9%2F1234510_445985318852535_1629685167_n.jpg&player1=https%3A%2F%2Flh5.googleusercontent.com%2F-eCpUySsQ6cw%2FAAAAAAAAAAI%2FAAAAAAAAAAA%2Fc-7EwF23tE4%2Fs128-c-k%2Fphoto.jpg" type="image/svg+xml")  
+                        <!-- http://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_encodeuricomponent -->
+                        %a.title(href="#") hopefulhazel vs arkeros
+                        %span 
+                            %core-icon(icon="social:person")
+                            2
+                        %span 
+                            %core-icon(icon="device:timer")
+                            1:00
+                    .card 
+                        %object.thumbnail(data="images/params.svg?player0= https%3A%2F%2Fscontent-a-mad.xx.fbcdn.net%2Fhphotos-frc3%2Ft1.0-9%2F1234510_445985318852535_1629685167_n.jpg&player1=https%3A%2F%2Flh5.googleusercontent.com%2F-eCpUySsQ6cw%2FAAAAAAAAAAI%2FAAAAAAAAAAA%2Fc-7EwF23tE4%2Fs128-c-k%2Fphoto.jpg" type="image/svg+xml")  
+                        <!-- http://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_encodeuricomponent -->
+                        %a.title(href="#") hopefulhazel vs arkeros
+                        %span 
+                            %core-icon(icon="social:person")
+                            2
+                        %span 
+                            %core-icon(icon="device:timer")
+                            1:00
+                    .card 
+                        %object.thumbnail(data="images/params.svg?player0= https%3A%2F%2Fscontent-a-mad.xx.fbcdn.net%2Fhphotos-frc3%2Ft1.0-9%2F1234510_445985318852535_1629685167_n.jpg&player1=https%3A%2F%2Flh5.googleusercontent.com%2F-eCpUySsQ6cw%2FAAAAAAAAAAI%2FAAAAAAAAAAA%2Fc-7EwF23tE4%2Fs128-c-k%2Fphoto.jpg" type="image/svg+xml")  
+                        <!-- http://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_encodeuricomponent -->
+                        %a.title(href="#") hopefulhazel vs arkeros
+                        %span 
+                            %core-icon(icon="social:person")
+                            2
+                        %span 
+                            %core-icon(icon="device:timer")
+                            1:00
+    
+        %paper-dialog#game-create(heading="Create Game" transition="paper-dialog-transition-bottom")
+            %div(layout=true horizontal=true)
+                %span(self-center=true) Players
+                %paper-slider(min="2" max="4" value="2" flex=true editable=true)
+            %div(layout=true horizontal=true)
+                %span(self-center=true) Turn duration
+                %paper-slider(min="20" max="300" step="20" value="60" flex=true editable=true)
+            %paper-button(label="Cancel" dismissive=true)
+            %paper-button(label="Create" affirmative=true onclick="document.querySelector('#game-created').show()" autofocus=true)
+        
+        %paper-toast#game-created(role="alert" text="Connection timed out. Showing limited messages.")
+            %div(onclick="console.log('RETRY')" style="color: #eeff41") Retry
+
+        <!-- build:js scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="../bower_components/jquery/dist/jquery.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+
+        <!-- build:js({app,.tmp}) scripts/main.js -->
+        <script src="scripts/main.js"></script>
+        <!-- endbuild -->

@@ -1,0 +1,21 @@
+{
+  "name": "dominoes",
+  "version": "0.0.0",
+  "authors": [
+    "Anonymous <anonymous@example.com>"
+  ],
+  "description": "Element providing solution to no problem in particular.",
+  "keywords": "dominoes, polymer, web-components",
+  "main": "dominoes-game.html",
+  "license": "MIT",
+  "homepage": "https://github.com/arkeros/dominoes/",
+  "ignore": [
+    "**/.*"
+  ],
+  "dependencies": {
+    "polymer": "*",
+    "polymer-test-tools": "Polymer/polymer-test-tools#*",
+    "underscore": "*",      
+    "screenfull": "*"
+  }
+}

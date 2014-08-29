@@ -1,0 +1,135 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="underscore.html">
+<link rel="import" href="screenfull.html">
+
+<link rel="import" href="../core-icon/core-icon.html">
+
+<link rel="import" href="dominoes-board.html">
+<link rel="import" href="dominoes-hand.html">
+
+<!--
+Element providing solution to no problem in particular.
+
+##### Example
+
+    <seed-element></seed-element>
+
+@element seed-element
+@blurb Element providing solution to no problem in particular.
+@status alpha
+@homepage http://polymerlabs.github.io/seed-element
+-->
+<polymer-element name="dominoes-node" attributes="ply board hands" constructor="DominoesNode">
+    <template>
+        <style>
+            :host {
+                position: relative;                
+            }
+            
+            #board {
+width: 80%;
+  height: 60%;
+  overflow: auto;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+            }
+            
+            #toolbar {
+                position:absolute;
+                bottom: 0;
+/*                left: 0;*/
+                right: 0;
+/*                background-color: #1b1b1b;*/
+                background-color: rgba(0, 0, 0, .25);
+            }
+        </style>
+        <div id="ply">{{ply}}</div>
+        <div id="n_deck">{{n_deck}}</div>
+        
+        <dominoes-board id="board" tiles="{{board}}"></dominoes-board>
+
+        <template repeat="{{hand,i in hands}}">
+            <dominoes-hand id="hand{{i}}" tiles="{{hand}}"></dominoes-hand>
+        </template>
+        
+        <core-toolbar id="toolbar">
+            <core-tooltip label="Pantalla completa">
+                <core-icon-button icon="fullscreen" on-tap="{{toggleFullScreen}}"></core-icon-button>
+            </core-tooltip>
+            
+        </core-toolbar>
+    </template>
+    <script>
+    Polymer('dominoes-node', {
+        /**
+        * The `author` attribute sets an initial author
+        * 
+        * @attribute tiles
+        * @type list
+        * @default []
+        */
+        hands: [],
+        board: [],
+        ply: 0,
+        n_deck: 28,
+        
+        get currentHand() {
+            return this.hands[this.ply];            
+        },
+        
+        ready: function() {
+            this.n_deck  = 28;
+            this.n_deck -= _.size(this.board);
+            this.n_deck -= _.reduce(this.hands, function(hand, n){ return n + hand.length; }, 0);
+//            Console.log(this.board[0]);
+        },
+        
+
+        /**
+        * The `sayHello` method will return a greeting.
+        * 
+        * @method sayHello
+        * @param {String} greeting Pass in a specific greeting.
+        * @return {String} Returns a string greeting.
+        */
+        move: function(hand_index, movement) {
+            if (hand_index != this.ply) {
+                //TODO throw exception
+            }
+            if (!_.contains(this.currentHand, movement.tile)) {
+                //TODO throw exception
+            }
+            
+            this.board.move(movement);
+            
+        },
+        
+        toggleFullScreen: function() {
+            if (screenfull.enabled) {
+                screenfull.toggle();
+            }
+        },
+
+      /**
+       * The `seed-element-lasers-success` event is fired whenever we
+       * call fireLasers.
+       * 
+       * @event seed-element-lasers-success
+       * @param {Object} detail
+       *   @param {string} detail.sound An amazing sound.
+       */
+
+      /**
+       * The `fireLasers` method will fire the lasers. At least
+       * it will dispatch an event that claims lasers were fired :)
+       * 
+       * @method fireLasers
+       */
+      fireLasers: function() {
+        this.fire('seed-element-lasers-success', { sound: 'Pew pew pew!' });
+      }
+
+    });
+  </script>
+</polymer-element>

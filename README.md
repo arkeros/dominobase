@@ -10,3 +10,7 @@ bower install --save jquer && grunt wiredep
 
     npm update
     bower update
+    
+## Build
+    
+    sh ./build.sh
