@@ -2,7 +2,7 @@
 ## [DominoBase](http://arkeros.github.io/dominobase) – OFFICIAL DominoBase Client Web App
 
 
-
+bower link dominoes-node
 bower install --save jquer && grunt wiredep
 
 

@@ -148,6 +148,7 @@ module.exports = function (grunt) {
             dist: {
                 options: {
                     csp: true,
+//                    inline: true,
                     strip: true,
 //                    excludes: {
 //                      imports: [
