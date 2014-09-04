@@ -2,10 +2,9 @@
   "name": "dominobase-webapp",
   "private": true,
   "dependencies": {
-    "modernizr": "*",
     "jquery": "<2.0.0",
     "polymer": "<1.0.0",
-    "dominoes-node": "arkeros/dominoes-node#master"
+    "dominoes-elements": "arkeros/dominoes-elements#master"
   },
   "devDependencies": {}
 }

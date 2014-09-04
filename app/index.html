@@ -9,9 +9,6 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link href='styles/main.css' media='screen, projection' rel='stylesheet' type='text/css'>
     <!-- endbuild -->
-    <!-- build:js scripts/vendor/modernizr.js -->
-    <script src="../bower_components/modernizr/modernizr.js"></script>
-    <!-- endbuild -->
     <!-- build:js scripts/vendor/polymer.js -->
     <script src="../bower_components/platform/platform.js"></script>
     <script src="../bower_components/polymer/polymer.js"></script>
@@ -28,5 +25,13 @@
       <dominobase-datasource user='{{user}}'></dominobase-datasource>
       <dominobase-app fit touch-action='auto' user='{{user}}'></dominobase-app>
     </template>
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js({app,.tmp}) scripts/main.js -->
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
   </body>
 </html>
