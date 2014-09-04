@@ -1,10 +1,24 @@
 {
   "name": "dominobase-webapp",
-  "private": true,
+  "description": "description TODO",  
+  "version": "0.0.0",
+  "main": "dist/index.html",
+  "license": "GPL-3.0+",
+  "keywords": [
+    "dominobase",
+    "dominoes",
+    "polymer"
+  ],
+  "authors": ["Rafael Arquero Gimeno"],
+  "homepage": "https://github.com/arkeros/dominobase",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/arkeros/dominobase.git"
+  },
   "dependencies": {
     "jquery": "<2.0.0",
     "polymer": "<1.0.0",
     "dominoes-elements": "arkeros/dominoes-elements#master"
   },
-  "devDependencies": {}
+  "private": true
 }
