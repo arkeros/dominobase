@@ -1,0 +1,1 @@
+function toggleDialog(a){var b=document.querySelector("paper-dialog#"+a);b.toggle()}
