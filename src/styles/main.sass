@@ -1,103 +1,92 @@
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-
-@import "compass/reset"
-@import "compass/typography/links/hover-link"
-@import "compass/typography/links/link-colors"
-@import compass/css3
-@import "compass/css3/transform"
-@import "compass/css3/box-shadow"
-@import "compass/css3/border-radius"
-
-
 $toolbar-background-color: #526E9C
 
 
-//core-tooltip        
-//    &::shadow .polymer-tooltip 
+//core-tooltip
+//    &::shadow .polymer-tooltip
 //        opacity: 0
 //        +transition-duration(300ms)
 //        +transition-timing-function(cubic-bezier(0,1.92,.99,1.07))
 //        +transform(translate3d(0, -10px, 0))
-//                
+//
 //    &:hover::shadow .polymer-tooltip,
 //    &:focus::shadow .polymer-tooltip
-//        opacity: 1
+//        opacity: 1:
 //        +transform3d(translate3d(0, 0, 0))
 
-            
-body 
+
+body
     font-family: "RobotoDraft", Helvetica, Arial, sans-serif
 
-        
-a 
-    +hover-link
 
-    
+a
+    text-decoration: none
+
+    &:hover
+        text-decoration: underline
+
+
 paper-tabs
     background-color: $toolbar-background-color
     color: #fff
-    
+
     &::shadow#selectionBar
         height: 3px
 //        background-color: #fff
-        
-        
+
+
 #content
     padding: 15px 18px
     margin: 10px 10%
     background-color: #fff
     color: #333
     height: 100%
-    +box-shadow(rgba(0,0,0,.1) 0 1px 2px )
-    +border-radius(1px)    
-        
+    box-shadow: rgba(0,0,0,.1) 0 1px 2px
+    border-radius: 1px
+
     h2
         font-weight: bold
         width: 100%
         margin-bottom: 10px
-        
-dominoes-node 
+
+dominoes-node
     display: inline-block
     margin: 10px auto
     width: 1200px
     height: 450px + 225px
     background-color: #071
 
-        
+
 .card
     width: 200px
     margin-right: 10px
     margin-bottom: 1em
     font-size: 0.8em
-    
+
     .thumbnail
         margin-bottom: 5px
         width: 100%
-        
+
     .title
         font-weight: bold
         font-size: 1.2em
         display: block
         width: 100%
-        
+
     span
         line-height: 1.5
         margin-right: 1em
-            
+
         core-icon
             width: 1em
             height: 1em
-        
-    
+
+
 footer
     text-align: center
     font-size: 0.75em
     margin: 10px 20px 30px 10px
     line-height: 1.5
     a
-        +link-colors(#727272)
+        color: #727272
         margin: 0 3px
-        
+

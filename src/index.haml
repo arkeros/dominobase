@@ -1,21 +1,20 @@
 !!!
-%html.no-js
+%html
     %head
         %meta(charset="utf-8")
         %title DominoBase
         %meta(name="description" content="bla bla bla.")
         %meta(name="viewport" content="width=device-width")
         %link(rel="shortcut icon" href="favicon.ico")
-        
+
         <!-- build:css(.tmp) styles/main.css -->
         %link(href="styles/main.css" media="screen, projection" rel="stylesheet" type="text/css")
         <!-- endbuild -->
-        
+
         <!-- build:js scripts/vendor/polymer.js -->
         <script src="../bower_components/platform/platform.js"></script>
-        <script src="../bower_components/polymer/polymer.js"></script>
-        <!-- endbuild -->  
-                        
+        <!-- endbuild -->
+
         %link(href="../bower_components/font-roboto/roboto.html" rel="import")
         %link(href="../bower_components/dominobase-elements/dominobase-datasource.html" rel="import")
         %link(href="../bower_components/dominobase-elements/dominobase-app.html" rel="import")
@@ -24,11 +23,11 @@
         <!--[if lt IE 10]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-    
+
         %template(is='auto-binding')
             %dominobase-datasource(user="{{user}}")
             %dominobase-app(fit=true user="{{user}}" touch-action="auto")
-                
+
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
         <script src="../bower_components/jquery/dist/jquery.js"></script>

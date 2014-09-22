@@ -123,7 +123,7 @@ module.exports = function (grunt) {
             },
             server: '.tmp'
         },
-        
+
     //http://stackoverflow.com/questions/16425728/yeoman-grunt-not-compiling-compass
       compass: {
         options: {
@@ -142,7 +142,7 @@ module.exports = function (grunt) {
           }
         }
       },
-                
+
         // grunt-vulcanize
         vulcanize: {
             dist: {
@@ -160,8 +160,8 @@ module.exports = function (grunt) {
                     '<%= config.dist %>/index.html': '<%= config.dist %>/index.html'
                 }
             },
-        },          
-                     
+        },
+
 
         remove: {
           unvulcanized: {
@@ -503,9 +503,9 @@ module.exports = function (grunt) {
         'uglify',
         'copy:dist',
         //https://github.com/davidmaxwaterman/yeoman-chromeapp/blob/master/Gruntfile.js
-        
 
-        
+
+
         'modernizr',
         'rev',
         'usemin',
@@ -521,7 +521,7 @@ module.exports = function (grunt) {
         'test',
         'build'
     ]);
-    
+
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-vulcanize');
     grunt.loadNpmTasks('grunt-remove');

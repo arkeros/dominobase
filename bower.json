@@ -1,6 +1,6 @@
 {
   "name": "dominobase-webapp",
-  "description": "description TODO",  
+  "description": "description TODO",
   "version": "0.0.0",
   "main": "dist/index.html",
   "license": "GPL-3.0+",
@@ -18,7 +18,7 @@
   "dependencies": {
     "jquery": "<2.0.0",
     "polymer": "<1.0.0",
-    "dominoes-elements": "arkeros/dominoes-elements#master"
+    "dominobase-elements": "arkeros/dominobase-elements#master"
   },
   "private": true
 }
