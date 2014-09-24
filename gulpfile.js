@@ -58,14 +58,14 @@ gulp.task('clean', ['clean:tmp', 'clean:build']);
 // default
 gulp.task('precompile', ['haml', 'sass', 'coffee']);
 
-gulp.task('build:bower', function () {
-    return gulp.src('bower_components')
-        .pipe($.sym(config.buildDir + '/bower_components/'));
-});
-
 gulp.task('build:styles', function () {
     return gulp.src(config.tmpDir + '/styles/**/*.css')
         .pipe(gulp.dest(config.buildDir + '/styles/'));
+});
+
+gulp.task('build:scripts', function () {
+    return gulp.src(config.tmpDir + '/scripts/**/*.js')
+        .pipe(gulp.dest(config.buildDir + '/scripts/'));
 });
 
 gulp.task('build:html', function () {
@@ -74,7 +74,7 @@ gulp.task('build:html', function () {
         .pipe(gulp.dest(config.buildDir + '/'));
 });
 
-gulp.task('build', ['build:bower', 'build:styles', 'build:html']);
+gulp.task('build', ['build:styles', 'build:scripts', 'build:html']);
 
 
 gulp.task('default', ['clean'], function (cb) {
@@ -85,10 +85,14 @@ gulp.task('default', ['clean'], function (cb) {
     );
 });
 
+
 gulp.task('dist', function () {
-    return gulp.src(config.buildDir + '/*')
-        .pipe($.size({
-            showFiles: true
-        }))
+    return gulp.src(config.buildDir + '/index.htmld')
+        .pipe($.vulcanize({dest: 'dist'}))
         .pipe(gulp.dest(config.distDir + '/'));
+});
+
+gulp.task('deploy', ['dist'], function () {
+    gulp.src("dist/**/*")
+        .pipe($.ghPages());
 });

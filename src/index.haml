@@ -20,19 +20,9 @@
         %link(href="../bower_components/dominobase-elements/dominobase-app.html" rel="import")
 
     %body
-        <!--[if lt IE 10]>
-        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
         %template(is='auto-binding')
             %dominobase-datasource(user="{{user}}")
             %dominobase-app(fit=true user="{{user}}" touch-action="auto")
-
-        <!-- build:js scripts/vendor.js -->
-        <!-- bower:js -->
-        <script src="../bower_components/jquery/dist/jquery.js"></script>
-        <!-- endbower -->
-        <!-- endbuild -->
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
         <script src="scripts/main.js"></script>
