@@ -16,9 +16,14 @@ body /deep/ core-toolbar {
 body /deep/ .card {
   position: relative;
   border-radius: 2px;
-  margin: 8px;
-  margin-bottom: 0; }
+  margin: 8px 0 0 8px;
+  background: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); }
+  body /deep/ .card .title {
+    padding: 16px;
+    font-size: 24px; }
   body /deep/ .card .text {
+    margin: 0;
     padding: 16px; }
 body /deep/ .hero {
   text-align: center;
@@ -17058,13 +17063,35 @@ polyfill-next-selector { content: '#tabsContainer > *:not(#selectionBar)'; }
         <core-icon icon="chevron-right"></core-icon>
         Contact
       </span>
-      <div class="card" layout="" vertical="">
-        <div class="title">We&#x2019;re here to help with any questions or comments. If you just want to say hi, that&apos;s cool too.</div>
-        <paper-input floatinglabel="" label="Name" required value="Rafael Arquero Gimeno"></paper-input>
-        <paper-input floatinglabel="" label="Email" required type="email" value="rafa.arquero@gmail.com"></paper-input>
-        <paper-input floatinglabel="" label="Subject"></paper-input>
-        <paper-input floatinglabel="" label="Body" maxrows="5" multiline="" required></paper-input>
-        <paper-button raised="">Send request</paper-button>
+      <div class="clip" horizontal="" layout="" style="width: 1200px;margin: 0 auto">
+        <div class="left" flex="">
+          <div class="card" layout="" vertical="">
+            <div class="title">We&#x2019;re here to help with any questions or comments. If you just want to say hi, that&apos;s cool too.</div>
+            <div class="text">
+              <paper-input floatinglabel="" label="Name" required value="Rafael Arquero Gimeno"></paper-input>
+              <paper-input floatinglabel="" label="Email" required type="email" value="rafa.arquero@gmail.com"></paper-input>
+              <paper-input floatinglabel="" label="Subject"></paper-input>
+              <paper-input floatinglabel="" label="Body" maxrows="5" multiline="" required></paper-input>
+              <paper-button>Send request</paper-button>
+            </div>
+          </div>
+        </div>
+        <div class="right" style="width:304px">
+          <div class="card" layout="" vertical="">
+            <div class="title">What&apos;s in a great support request?</div>
+            <p class="text">
+              Be succinct, we&apos;ll ask if we need more info
+              The name of the user or repository you&#x2019;re having troubles with
+            </p>
+          </div>
+          <div class="card" layout="" vertical="">
+            <div class="title">Reporting a bug?</div>
+            <p class="text">
+              Please submit a new
+              <a href="https://github.com/arkeros/dominobase/issues/new">Issue on Github</a>
+            </p>
+          </div>
+        </div>
       </div>
     </base-layout>
   </template>
