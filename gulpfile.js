@@ -81,13 +81,14 @@ gulp.task('default', ['clean'], function (cb) {
     runSequence(
         'precompile',
         'build',
+        'dist',
         cb
     );
 });
 
 
 gulp.task('dist', function () {
-    return gulp.src(config.buildDir + '/index.htmld')
+    return gulp.src(config.buildDir + '/index.html')
         .pipe($.vulcanize({dest: 'dist'}))
         .pipe(gulp.dest(config.distDir + '/'));
 });

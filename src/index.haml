@@ -8,22 +8,16 @@
         %link(rel="shortcut icon" href="favicon.ico")
 
         <!-- build:css(.tmp) styles/main.css -->
-        %link(href="styles/main.css" media="screen, projection" rel="stylesheet" type="text/css")
+        %link(href="./styles/main.css" media="screen, projection" rel="stylesheet" type="text/css")
         <!-- endbuild -->
 
-        <!-- build:js scripts/vendor/polymer.js -->
-        <script src="../bower_components/platform/platform.js"></script>
-        <!-- endbuild -->
+        %script(src="../bower_components/platform/platform.js")
 
         %link(href="../bower_components/font-roboto/roboto.html" rel="import")
         %link(href="../bower_components/dominobase-elements/dominobase-datasource.html" rel="import")
         %link(href="../bower_components/dominobase-elements/dominobase-app.html" rel="import")
 
-    %body
+    %body(fullbleed=true)
         %template(is='auto-binding')
             %dominobase-datasource(user="{{user}}")
             %dominobase-app(fit=true user="{{user}}" touch-action="auto")
-
-        <!-- build:js({app,.tmp}) scripts/main.js -->
-        <script src="scripts/main.js"></script>
-        <!-- endbuild -->

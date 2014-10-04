@@ -1,92 +1,25 @@
-$toolbar-background-color: #526E9C
-
-
-//core-tooltip
-//    &::shadow .polymer-tooltip
-//        opacity: 0
-//        +transition-duration(300ms)
-//        +transition-timing-function(cubic-bezier(0,1.92,.99,1.07))
-//        +transform(translate3d(0, -10px, 0))
-//
-//    &:hover::shadow .polymer-tooltip,
-//    &:focus::shadow .polymer-tooltip
-//        opacity: 1:
-//        +transform3d(translate3d(0, 0, 0))
-
-
 body
-    font-family: "RobotoDraft", Helvetica, Arial, sans-serif
+    /deep/
+        a
+            text-decoration: none
+            color: #0277bb
 
+        core-toolbar
+            background-color: #03a9f4
+            color: white
 
-a
-    text-decoration: none
+        .hero
+            text-align: center
+            background-size: cover
+            background-position: 50%
+            width: 100%
+            height: 304px
+            color: white
 
-    &:hover
-        text-decoration: underline
+            .title
+                font-size: 56px
 
-
-paper-tabs
-    background-color: $toolbar-background-color
-    color: #fff
-
-    &::shadow#selectionBar
-        height: 3px
-//        background-color: #fff
-
-
-#content
-    padding: 15px 18px
-    margin: 10px 10%
-    background-color: #fff
-    color: #333
-    height: 100%
-    box-shadow: rgba(0,0,0,.1) 0 1px 2px
-    border-radius: 1px
-
-    h2
-        font-weight: bold
-        width: 100%
-        margin-bottom: 10px
-
-dominoes-node
-    display: inline-block
-    margin: 10px auto
-    width: 1200px
-    height: 450px + 225px
-    background-color: #071
-
-
-.card
-    width: 200px
-    margin-right: 10px
-    margin-bottom: 1em
-    font-size: 0.8em
-
-    .thumbnail
-        margin-bottom: 5px
-        width: 100%
-
-    .title
-        font-weight: bold
-        font-size: 1.2em
-        display: block
-        width: 100%
-
-    span
-        line-height: 1.5
-        margin-right: 1em
-
-        core-icon
-            width: 1em
-            height: 1em
-
-
-footer
-    text-align: center
-    font-size: 0.75em
-    margin: 10px 20px 30px 10px
-    line-height: 1.5
-    a
-        color: #727272
-        margin: 0 3px
-
+            .text
+                padding: 0 10%
+                margin: 2em 0
+                font-size: 24px
