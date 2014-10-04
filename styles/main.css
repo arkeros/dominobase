@@ -1,0 +1,26 @@
+body /deep/ a {
+  text-decoration: none;
+  color: #0277bb; }
+body /deep/ core-toolbar {
+  background-color: #03a9f4;
+  color: white; }
+body /deep/ .card {
+  position: relative;
+  border-radius: 2px;
+  margin: 8px;
+  margin-bottom: 0; }
+  body /deep/ .card .text {
+    padding: 16px; }
+body /deep/ .hero {
+  text-align: center;
+  background-size: cover;
+  background-position: 50%;
+  width: 100%;
+  height: 304px;
+  color: white; }
+  body /deep/ .hero .title {
+    font-size: 56px; }
+  body /deep/ .hero .text {
+    padding: 0 10%;
+    margin: 2em 0;
+    font-size: 24px; }
