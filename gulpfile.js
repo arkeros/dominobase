@@ -86,11 +86,18 @@ gulp.task('default', ['clean'], function (cb) {
     );
 });
 
+gulp.task('dist:copy', function () {
+    return gulp.src(config.buildDir + '/**/*', {base: config.buildDir})
+        .pipe(gulp.dest(config.distDir));
+});
 
-gulp.task('dist', function () {
-    return gulp.src(config.buildDir + '/index.html')
-        .pipe($.vulcanize({dest: 'dist'}))
-        .pipe(gulp.dest(config.distDir + '/'));
+gulp.task('dist', ['dist:copy'], function () {
+    return gulp.src(config.distDir + '/index.html')
+        .pipe($.vulcanize({
+            dest: 'dist',
+            inline: true
+        }))
+        .pipe(gulp.dest(config.distDir));
 });
 
 gulp.task('deploy', ['dist'], function () {
