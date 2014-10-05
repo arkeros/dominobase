@@ -15,16 +15,26 @@ body /deep/ core-toolbar {
   color: white; }
 body /deep/ .card {
   position: relative;
-  border-radius: 2px;
-  margin: 8px 0 0 8px;
-  background: white;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); }
+  border-radius: 4px;
+  margin: 16px 0 0 16px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  background: #fafafa;
+  color: #424242;
+  overflow: hidden; }
   body /deep/ .card .title {
-    padding: 16px;
-    font-size: 24px; }
+    padding: 32px;
+    font-size: 24px;
+    font-weight: 500; }
   body /deep/ .card .text {
     margin: 0;
     padding: 16px; }
+  body /deep/ .card > paper-input {
+    margin-left: 32px;
+    width: calc(100% - 32px); }
+  body /deep/ .card /deep/ core-toolbar {
+    border-top: 1px solid #e0e0e0;
+    background: transparent;
+    color: inherit; }
 body /deep/ .hero {
   text-align: center;
   background-size: cover;
@@ -15196,6 +15206,8 @@ when a user explicitely signs out via the google-signin element.
   <template>
     <style>:host {
   font-family: "RobotoDraft", Helvetica, Arial, sans-serif; }
+  :host #appbar .actions {
+    display: inline-block; }
 
 #userinfo {
   position: relative;
@@ -15253,19 +15265,18 @@ footer {
       </core-header-panel>
       <div id="appbar" tool="">
         <content select="[title]"></content>
-        <content select="[actions]">
-          <paper-menu-button halign="right" icon="more-vert">
-            <paper-item label="Refresh"></paper-item>
-            <paper-item label="Send feedback">
-              <a href="/contact" is="pushstate-anchor"></a>
-            </paper-item>
-            <paper-item label="Settings"></paper-item>
-            <paper-item label="Help">
-              <a href="/help" is="pushstate-anchor"></a>
-            </paper-item>
-            <!-- %div Sign Out -->
-          </paper-menu-button>
-        </content>
+        <content class="actions" select="[actions]"></content>
+        <paper-menu-button halign="right" icon="more-vert">
+          <paper-item label="Refresh"></paper-item>
+          <paper-item label="Send feedback">
+            <a href="/contact" is="pushstate-anchor"></a>
+          </paper-item>
+          <paper-item label="Settings"></paper-item>
+          <paper-item label="Help">
+            <a href="/help" is="pushstate-anchor"></a>
+          </paper-item>
+          <!-- %div Sign Out -->
+        </paper-menu-button>
       </div>
       <div id="content" layout="" vertical="">
         <content></content>
@@ -16641,7 +16652,7 @@ The opacity of the ripple is not customizable via CSS.
           <paper-ripple fit=""></paper-ripple>
         </div>
         <div class="tile" style="background-color:#e040fb">
-          <div class="title">Chess Mentor</div>
+          <div class="title">Mentor</div>
           <core-icon class="icon" icon="social:school"></core-icon>
           <paper-ripple fit=""></paper-ripple>
         </div>
@@ -17067,13 +17078,11 @@ polyfill-next-selector { content: '#tabsContainer > *:not(#selectionBar)'; }
         <div class="left" flex="">
           <div class="card" layout="" vertical="">
             <div class="title">We&#x2019;re here to help with any questions or comments. If you just want to say hi, that&apos;s cool too.</div>
-            <div class="text">
-              <paper-input floatinglabel="" label="Name" required value="Rafael Arquero Gimeno"></paper-input>
-              <paper-input floatinglabel="" label="Email" required type="email" value="rafa.arquero@gmail.com"></paper-input>
-              <paper-input floatinglabel="" label="Subject"></paper-input>
-              <paper-input floatinglabel="" label="Body" maxrows="5" multiline="" required></paper-input>
-              <paper-button>Send request</paper-button>
-            </div>
+            <paper-input floatinglabel="" label="Name" required value="Rafael Arquero Gimeno"></paper-input>
+            <paper-input floatinglabel="" label="Email" required type="email" value="rafa.arquero@gmail.com"></paper-input>
+            <paper-input floatinglabel="" label="Subject"></paper-input>
+            <paper-input floatinglabel="" label="Body" maxrows="5" multiline="" required></paper-input>
+            <paper-button>Send request</paper-button>
           </div>
         </div>
         <div class="right" style="width:304px">
@@ -37826,56 +37835,20 @@ dominoes-node {
         <core-icon icon="chevron-right"></core-icon>
         arkeros vs hopefulhazel
       </span>
-      <div actions="" class="actions">
+      <span actions="">
         <paper-icon-button halign="right" icon="add" on-tap="{{toggleCreateGame}}"></paper-icon-button>
         <paper-icon-button halign="right" icon="search"></paper-icon-button>
-      </div>
+      </span>
       <div horizontal="" layout="">
         <div flex="" id="leftbar" layout="" vertical="">
           <div class="aspect-ratio169">
             <dominoes-node board="{&quot;tiles&quot;: [ [3, 3], [3, 6], [6, 0], [0, 3], [3, 2], [2, 4], [4, 6], [6, 6], [6, 5], [5, 1], [1, 6], [6, 2], [2, 0], [0, 5], [5, 5], [5, 3], [3, 1], [1, 1], [1, 2], [2, 5], [5, 4], [4, 3] ], &quot;root&quot;: [1, 6]}" hands="[ [ [0, 0], [1, 0] ], [ [2, 2], [5, 5] ] ]"></dominoes-node>
           </div>
-          <section>
-            <h1>Final del campeonato mundial</h1>
-          </section>
         </div>
         <div id="rightbar" layout="" vertical="">
-          <section flex="" id="chat" layout="" vertical="">
-            <div flex="" id="messages">
-              <div class="message" horizontal="" layout="">
-                <a class="thumbnail" href="../bower_components/dominobase-elements/pages/#">
-                  <img src="https://lh3.googleusercontent.com/-HU7WoWTJ4s0/UvJSR6qW0kI/AAAAAAAAAG4/1VyCZ1yVHNw/w315-h316-no/942468_10201725807489308_1174446910_n.jpg">
-                </a>
-                <div class="inline">
-                  <a class="author" href="../bower_components/dominobase-elements/pages/#">
-                    arkeros
-                  </a>
-                  hola
-                </div>
-              </div>
-              <div class="message" horizontal="" layout="">
-                <a class="thumbnail" href="../bower_components/dominobase-elements/pages/#">
-                  <img src="http://profile.ak.fbcdn.net/hprofile-ak-frc3/t1.0-1/1939840_520061504778249_1525149753_a.jpg">
-                </a>
-                <div class="inline" flex="">
-                  <a class="author" href="../bower_components/dominobase-elements/pages/#">hopefulhazel</a>
-                  eii
-                </div>
-              </div>
-              <div class="message" horizontal="" layout="">
-                <a class="thumbnail" href="../bower_components/dominobase-elements/pages/#">
-                  <img src="https://lh3.googleusercontent.com/-HU7WoWTJ4s0/UvJSR6qW0kI/AAAAAAAAAG4/1VyCZ1yVHNw/w315-h316-no/942468_10201725807489308_1174446910_n.jpg">
-                </a>
-                <div class="inline" flex="">
-                  <a class="author" href="../bower_components/dominobase-elements/pages/#">arkeros</a>
-                  voy a ganar jeje
-                </div>
-              </div>
-            </div>
-            <paper-input id="input" label="Write a message..." maxrows="3" multiline=""></paper-input>
-          </section>
-          <section flex="" id="log">
-            eventos del juego...
+          <chat-card flex="" messages="[{&quot;author&quot;: {&quot;name&quot;: &quot;arkeros&quot;, &quot;avatar&quot;: &quot;https://lh3.googleusercontent.com/-HU7WoWTJ4s0/UvJSR6qW0kI/AAAAAAAAAG4/1VyCZ1yVHNw/w315-h316-no/942468_10201725807489308_1174446910_n.jpg&quot;}, &quot;body&quot;: &quot;hola&quot;}, {&quot;author&quot;: {&quot;name&quot;: &quot;hopefulhazel&quot;, &quot;avatar&quot;: &quot;http://profile.ak.fbcdn.net/hprofile-ak-frc3/t1.0-1/1939840_520061504778249_1525149753_a.jpg&quot;}, &quot;body&quot;: &quot;eiii&quot;}, {&quot;author&quot;: {&quot;name&quot;: &quot;arkeros&quot;, &quot;avatar&quot;: &quot;https://lh3.googleusercontent.com/-HU7WoWTJ4s0/UvJSR6qW0kI/AAAAAAAAAG4/1VyCZ1yVHNw/w315-h316-no/942468_10201725807489308_1174446910_n.jpg&quot;}, &quot;body&quot;: &quot;voy a ganar&quot;}, {&quot;author&quot;: {&quot;name&quot;: &quot;hopefulhazel&quot;, &quot;avatar&quot;: &quot;http://profile.ak.fbcdn.net/hprofile-ak-frc3/t1.0-1/1939840_520061504778249_1525149753_a.jpg&quot;}, &quot;body&quot;: &quot;eso habr&#xE1; que verlo&quot;}]"></chat-card>
+          <div class="card" flex="" id="log">
+            <div class="title">Events</div>
             <core-icon icon="emoji:&#x1F604;"></core-icon>
             <core-icon icon="emoji:&#x1F603;"></core-icon>
             <core-icon icon="emoji:&#x1F60A;"></core-icon>
@@ -37883,7 +37856,7 @@ dominoes-node {
             <core-icon icon="emoji:princess"></core-icon>
             <core-icon icon="emoji:couple-with-heart"></core-icon>
             <core-icon icon="emoji:Aries"></core-icon>
-            <core-icon icon="emoji:kissing-smiling-eyes"></core-icon>
+            <core-icon icon="emoji:kissing-smiling-yees"></core-icon>
             <core-icon icon="emoji:wolf-face"></core-icon>
             <core-icon icon="emoji:Capricorn"></core-icon>
             <core-icon icon="emoji:sweat-smile"></core-icon>
@@ -38063,7 +38036,7 @@ dominoes-node {
             <core-icon icon="emoji:moon-with-face"></core-icon>
             <core-icon icon="emoji:smile"></core-icon>
             <core-icon icon="emoji:Happy-FMC"></core-icon>
-          </section>
+          </div>
         </div>
       </div>
     </base-layout>
@@ -38091,6 +38064,1664 @@ dominoes-node {
     </base-layout>
   </template>
 <script>Polymer('not-found-page');</script></polymer-element>
+
+
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+`core-list` displays a virtual, 'infinite' list. The template inside the 
+`core-list` element represents the dom to create for each list item. The
+`data` property specifies an array of list item data. The `height` property
+represents the fixed height of a list item (variable height list items are
+not yet supported).
+
+`core-list` manages a viewport of data based on the current scroll position.
+For performance reasons, not every item in the list is rendered at once.
+
+List item templates should bind to template models of the following structure
+
+    {
+      index: 0,         // list index for this item
+      selected: false,  // selection state for this item
+      model: {          // user data corresponding to data[index]
+        /* user data  */
+      }
+    }
+
+For example, given the following data array:
+
+    [
+      {name: 'Bob', checked: true},
+      {name: 'Tim', checked: false},
+      ...
+    ]
+
+The following code would render the list (note the `name` and `checked`
+properties are bound from the `model` object provided to the template
+scope):
+
+    <core-list data="{{data}}" height="80">
+      <template>
+        <div class="{{ {selected: selected} | tokenList }}">
+          List row: {{index}}, User data from model: {{model.name}}
+          <input type="checkbox" checked="{{model.checked}}">
+        </div>
+      </template>
+    </core-list>
+
+By default, the list supports selection via tapping. Styling the selection 
+should be done via binding to the `selected` property of each model.
+
+@group Polymer Core Elements
+@element core-list
+-->
+
+
+
+<polymer-element name="core-list" on-tap="{{tapHandler}}" tabindex="-1" assetpath="../bower_components/core-list/">
+<template>
+  <core-selection id="selection" multi="{{multi}}" on-core-select="{{selectedHandler}}"></core-selection>
+  <style>/*
+ * @license
+ * Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+ * This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+ * The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+ * The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+ * Code distributed by Google as part of the polymer project is also
+ * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+ */
+
+:host {
+  display: block;
+  overflow: auto;
+  outline: none;
+}
+
+.core-list-viewport > * {
+  overflow: hidden;
+}
+
+.core-list-viewport.horizontal {
+  height: 100%;
+  white-space: nowrap;
+}
+
+.core-list-viewport.horizontal > * {
+  display: inline-block;
+}
+
+/* Setting will-change: transform on the #viewport makes the viewport a
+   stacking context, which causes all the composited layers inside the
+   viewport to actually be stacked underneath the viewport. */
+#viewport {
+  will-change: transform;
+}
+</style>
+  <div id="viewport" class="core-list-viewport"><content></content></div>
+</template>
+<script>
+(function() {
+
+  Polymer('core-list', {
+    
+    publish: {
+      /**
+       * Fired when an item element is tapped.
+       * 
+       * @event core-activate
+       * @param {Object} detail
+       *   @param {Object} detail.item the item element
+       */
+
+      /**
+       * 
+       * An array of source data for the list to display.
+       *
+       * @attribute data
+       * @type array
+       * @default null
+       */
+      data: null,
+
+      /**
+       * 
+       * An optional element on which to listen for scroll events.
+       *
+       * @attribute scrollTarget
+       * @type Element
+       * @default core-list
+       */
+      scrollTarget: null,
+
+      /**
+       * 
+       * The height of a list item. `core-list` currently supports only fixed-height
+       * list items. This height must be specified via the height property.
+       *
+       * @attribute height
+       * @type number
+       * @default 80
+       */
+      height: 80,
+
+      /**
+       * 
+       * The number of extra items rendered above the minimum set required to
+       * fill the list's height.
+       *
+       * @attribute extraItems
+       * @type number
+       * @default 30
+       */
+      extraItems: 30,
+
+      /**
+       * 
+       * When true, tapping a row will select the item, placing its data model
+       * in the set of selected items retrievable via the `selection` property.
+       *
+       * Note that tapping focusable elements within the list item will not
+       * result in selection, since they are presumed to have their own action.
+       *
+       * @attribute selectionEnabled
+       * @type {boolean}
+       * @default true
+       */
+      selectionEnabled: true,
+
+      /**
+       * 
+       * Set to true to support multiple selection.  Note, existing selection
+       * state is maintained only when changing `multi` from `false` to `true`;
+       * it is cleared when changing from `true` to `false`.
+       *
+       * @attribute multi
+       * @type boolean
+       * @default false
+       */
+      multi: false,
+
+      /**
+       * 
+       * Data record (or array of records, if `multi: true`) corresponding to
+       * the currently selected set of items.
+       *
+       * @attribute selection
+       * @type {any}
+       * @default null
+       */
+       selection: null
+    },
+
+    // Local cache of scrollTop
+    _scrollTop: 0,
+    
+    observe: {
+      'data template scrollTarget': 'initialize',
+      'multi selectionEnabled': '_resetSelection'
+    },
+
+    ready: function() {
+      this._boundScrollHandler = this.scrollHandler.bind(this);
+      this._oldMulti = this.multi;
+      this._oldSelectionEnabled = this.selectionEnabled;
+    },
+
+    attached: function() {
+      this.template = this.querySelector('template');
+      if (!this.template.bindingDelegate) {
+        this.template.bindingDelegate = this.element.syntax;
+      }
+    },
+
+    _resetSelection: function() {
+      if (((this._oldMulti != this.multi) && !this.multi) || 
+          ((this._oldSelectionEnabled != this.selectionEnabled) && 
+            !this.selectionEnabled)) {
+        this._clearSelection();
+        this.refresh(true);
+      } else {
+        this.selection = this.$.selection.getSelection();
+      }
+      this._oldMulti = this.multi;
+      this._oldSelectionEnabled = this.selectionEnabled;
+    },
+
+    // TODO(sorvell): it'd be nice to dispense with 'data' and just use 
+    // template repeat's model. However, we need tighter integration
+    // with TemplateBinding for this.
+    initialize: function() {
+      if (!this.template) {
+        return;
+      }
+      
+      // TODO(kschaaf): This is currently the only way to know that the array
+      // was mutated as opposed to newly assigned; to be updated with better API
+      if (arguments.length == 1) {
+        var splices = arguments[0];
+        for (var i=0; i<splices.length; i++) {
+          var s = splices[i];
+          for (var j=0; j<s.removed.length; j++) {
+            var d = s.removed[j];
+            this.$.selection.setItemSelected(d, false);
+          }
+        }
+      } else {
+        this._clearSelection();
+      }
+
+      var target = this.scrollTarget || this;
+      if (this._target !== target) {
+        if (this._target) {
+          this._target.removeEventListener('scroll', this._boundScrollHandler, false);
+        }
+        this._target = target;
+        this._target.addEventListener('scroll', this._boundScrollHandler, false);
+      }
+      // Only use -webkit-overflow-touch from iOS8+, where scroll events are fired
+      var ios = navigator.userAgent.match(/iP(?:hone|ad;(?: U;)? CPU) OS (\d+)/);
+      if (ios && ios[1] >= 8) {
+        target.style.webkitOverflowScrolling = 'touch';
+      }
+
+      this.initializeData();
+    },
+
+    initializeData: function() {
+      var currentCount = this._physicalCount || 0;
+      var dataLen = this.data && this.data.length || 0;
+      this._visibleCount = Math.ceil(this._target.offsetHeight / this.height);
+      this._physicalCount = Math.min(this._visibleCount + this.extraItems, dataLen);
+      this._physicalCount = Math.max(currentCount, this._physicalCount);
+      this._physicalData = this._physicalData || new Array(this._physicalCount);
+      var needItemInit = false;
+      while (currentCount < this._physicalCount) {
+        this._physicalData[currentCount++] = {};
+        needItemInit = true;
+      }
+      this.template.model = this._physicalData;
+      this.template.setAttribute('repeat', '');
+      if (needItemInit) {
+        this.onMutation(this, this.initializeItems);
+      } else {
+        this.refresh(true);
+      }
+    },
+
+    initializeItems: function() {
+      var currentCount = this._physicalItems && this._physicalItems.length || 0;
+      this._physicalItems = this._physicalItems || new Array(this._physicalCount);
+      for (var i = 0, item = this.template.nextElementSibling;
+           item && i < this._physicalCount;
+           ++i, item = item.nextElementSibling) {
+        this._physicalItems[i] = item;
+        item._transformValue = 0;
+      }
+      this.refresh(true);
+    },
+
+    updateItem: function(virtualIndex, physicalIndex) {
+      var virtualDatum = this.data && this.data[virtualIndex];
+      var physicalDatum = this._physicalData[physicalIndex];
+      physicalDatum.model = virtualDatum;
+      physicalDatum.physicalIndex = physicalIndex;
+      physicalDatum.index = virtualIndex;
+      physicalDatum.selected = this.selectionEnabled && virtualDatum ? 
+          this._selectedData.get(virtualDatum) : null;
+      var physicalItem = this._physicalItems[physicalIndex];
+      physicalItem.hidden = !virtualDatum;
+    },
+
+    scrollHandler: function(e, detail) {
+      this._scrollTop = e.detail ? e.detail.target.scrollTop : e.target.scrollTop;
+      this.refresh(false);
+    },
+
+    /**
+     * Refresh the list at the current scroll position.
+     *
+     * @method refresh
+     */
+    refresh: function(force) {
+      // Check that the array hasn't gotten longer since data was initialized
+      var dataLen = this.data && this.data.length || 0;
+      if (force) {
+        if (this._physicalCount < 
+            Math.min(this._visibleCount + this.extraItems, dataLen)) {
+          // Need to add more items; once new data & items are initialized,
+          // refresh will be run again
+          this.initializeData();
+          return;
+        }
+        this._physicalHeight = this.height * this._physicalCount;
+        this.$.viewport.style.height = this.height * dataLen + 'px';
+      }
+
+      var firstVisibleIndex = Math.floor(this._scrollTop / this.height);
+      var visibleMidpoint = firstVisibleIndex + this._visibleCount / 2;
+
+      var firstReifiedIndex = Math.max(0, Math.floor(visibleMidpoint - 
+          this._physicalCount / 2));
+      firstReifiedIndex = Math.min(firstReifiedIndex, dataLen - 
+          this._physicalCount);
+      firstReifiedIndex = (firstReifiedIndex < 0) ? 0 : firstReifiedIndex;
+
+      var firstPhysicalIndex = firstReifiedIndex % this._physicalCount;
+      var baseVirtualIndex = firstReifiedIndex - firstPhysicalIndex;
+
+      var baseTransformValue = Math.floor(this.height * baseVirtualIndex);
+      var nextTransformValue = Math.floor(baseTransformValue + 
+          this._physicalHeight);
+
+      var baseTransformString = 'translate3d(0,' + baseTransformValue + 'px,0)';
+      var nextTransformString = 'translate3d(0,' + nextTransformValue + 'px,0)';
+
+      this.firstPhysicalIndex = firstPhysicalIndex;
+      this.baseVirtualIndex = baseVirtualIndex;
+
+      for (var i = 0; i < firstPhysicalIndex; ++i) {
+        var item = this._physicalItems[i];
+        if (force || item._transformValue != nextTransformValue) {
+          this.updateItem(baseVirtualIndex + this._physicalCount + i, i);
+          setTransform(item, nextTransformString, nextTransformValue);
+        }
+      }
+      for (var i = firstPhysicalIndex; i < this._physicalCount; ++i) {
+        var item = this._physicalItems[i];
+        if (force || item._transformValue != baseTransformValue) {
+          this.updateItem(baseVirtualIndex + i, i);
+          setTransform(item, baseTransformString, baseTransformValue);
+        }
+      }
+    },
+
+    // list selection
+    tapHandler: function(e) {
+      var n = e.target;
+      var p = e.path;
+      if (!this.selectionEnabled || (n === this)) {
+        return;
+      }
+      requestAnimationFrame(function() {
+        // Gambit: only select the item if the tap wasn't on a focusable child
+        // of the list (since anything with its own action should be focusable
+        // and not result in result in list selection).  To check this, we
+        // asynchronously check that shadowRoot.activeElement is null, which 
+        // means the tapped item wasn't focusable. On polyfill where
+        // activeElement doesn't follow the data-hinding part of the spec, we
+        // can check that document.activeElement is the list itself, which will
+        // catch focus in lieu of the tapped item being focusable, as we make
+        // the list focusable (tabindex="-1") for this purpose.  Note we also
+        // allow the list items themselves to be focusable if desired, so those
+        // are excluded as well.
+        var active = window.ShadowDOMPolyfill ? 
+            wrap(document.activeElement) : this.shadowRoot.activeElement;
+        if (active && (active != this) && (active.parentElement != this) && 
+            (document.activeElement != document.body)) {
+          return;
+        }
+        // Unfortunately, Safari does not focus certain form controls via mouse,
+        // so we also blacklist input, button, & select
+        // (https://bugs.webkit.org/show_bug.cgi?id=118043)
+        if ((p[0].localName == 'input') || 
+            (p[0].localName == 'button') || 
+            (p[0].localName == 'select')) {
+          return;
+        }
+
+        var model = n.templateInstance && n.templateInstance.model;
+        if (model) {
+          var vi = model.index, pi = model.physicalIndex;
+          var data = this.data[vi], item = this._physicalItems[pi];
+          this.$.selection.select(data);
+          this.asyncFire('core-activate', {data: data, item: item});
+        }
+      }.bind(this));
+    },
+
+    selectedHandler: function(e, detail) {
+      this.selection = this.$.selection.getSelection();
+      var i$ = this.indexesForData(detail.item);
+      // TODO(sorvell): we should be relying on selection to store the
+      // selected data but we want to optimize for lookup.
+      this._selectedData.set(detail.item, detail.isSelected);
+      if (i$.physical >= 0) {
+        this.updateItem(i$.virtual, i$.physical);
+      }
+    },
+
+    /**
+     * Select the list item at the given index.
+     *
+     * @method selectItem
+     * @param {number} index 
+     */
+    selectItem: function(index) {
+      if (!this.selectionEnabled) {
+        return;
+      }
+      var data = this.data[index];
+      if (data) {
+        this.$.selection.select(data);
+      }
+    },
+
+    /**
+     * Set the selected state of the list item at the given index.
+     *
+     * @method setItemSelected
+     * @param {number} index 
+     * @param {boolean} isSelected 
+     */
+    setItemSelected: function(index, isSelected) {
+      var data = this.data[index];
+      if (data) {
+        this.$.selection.setItemSelected(data, isSelected);
+      }
+    },
+
+    indexesForData: function(data) {
+      var virtual = this.data.indexOf(data);
+      var physical = this.virtualToPhysicalIndex(virtual);
+      return { virtual: virtual, physical: physical };
+    },
+
+    virtualToPhysicalIndex: function(index) {
+      for (var i=0, l=this._physicalData.length; i<l; i++) {
+        if (this._physicalData[i].index === index) {
+          return i;
+        }
+      }
+      return -1;
+    },
+
+    /**
+     * Clears the current selection state of the list.
+     *
+     * @method clearSelection
+     */
+    clearSelection: function() {
+      this._clearSelection();
+      this.refresh(true);
+    },
+
+    _clearSelection: function() {
+      this._selectedData = new WeakMap();
+      this.$.selection.clear();
+      this.selection = this.$.selection.getSelection();
+    },
+
+    scrollToItem: function(index) {
+      this.scrollTop = index * this.height;
+    }
+
+  });
+
+  // determine proper transform mechanizm
+  if (document.documentElement.style.transform !== undefined) {
+    var setTransform = function(element, string, value) {
+      element.style.transform = string;
+      element._transformValue = value;
+    }
+  } else {
+    var setTransform = function(element, string, value) {
+      element.style.webkitTransform = string;
+      element._transformValue = value;
+    }
+  }
+
+})();
+</script>
+</polymer-element>
+
+<!--
+    @license
+    Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+    This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+    The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+    The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+    Code distributed by Google as part of the polymer project is also
+    subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+
+
+
+
+<!--
+
+`core-transition-pages` represents a page transition, which may include CSS and/or
+script. It will look for a `core-style` element with the same `id` to install in the
+scope of the `core-animated-pages` that's using the transition.
+
+Example:
+
+    <core-style id="fooTransition">
+        // some CSS here
+    </core-style>
+    <core-transition-pages id="fooTransition"></core-transition-pages>
+
+There are three stages to a page transition:
+
+1. `prepare`: Called to set up the incoming and outgoing pages to the "before" state,
+  e.g. setting the incoming page to `opacity: 0` for `cross-fade` or find and
+  measure hero elements for `hero-transition`.
+
+2. `go`: Called to run the transition. For CSS-based transitions, this generally
+  applies a CSS `transition` property.
+
+3. `complete`: Called when the elements are finished transitioning.
+
+See the individual transition documentation for specific details.
+
+@element core-transition-pages
+@extends core-transition
+@status beta
+@homepage github.io
+-->
+<!--
+Fired when the transition completes.
+
+@event core-transitionend
+-->
+<polymer-element name="core-transition-pages" extends="core-transition" assetpath="../bower_components/core-animated-pages/transitions/">
+<script>
+
+(function () {
+
+// create some basic transition styling data.
+var transitions = CoreStyle.g.transitions = CoreStyle.g.transitions || {};
+transitions.duration = '500ms';
+transitions.heroDelay = '50ms';
+transitions.scaleDelay = '500ms';
+transitions.cascadeFadeDuration = '250ms';
+
+Polymer('core-transition-pages',{
+
+  publish: {
+    /**
+     * This class will be applied to the scope element in the `prepare` function.
+     * It is removed in the `complete` function. Used to activate a set of CSS
+     * rules that need to apply before the transition runs, e.g. a default opacity
+     * or transform for the non-active pages.
+     *
+     * @attribute scopeClass
+     * @type string
+     * @default ''
+     */
+    scopeClass: '',
+
+    /**
+     * This class will be applied to the scope element in the `go` function. It is
+     * remoived in the `complete' function. Generally used to apply a CSS transition
+     * rule only during the transition.
+     *
+     * @attribute activeClass
+     * @type string
+     * @default ''
+     */
+    activeClass: '',
+
+    /**
+     * Specifies which CSS property to look for when it receives a `transitionEnd` event
+     * to determine whether the transition is complete. If not specified, the first
+     * transitionEnd event received will complete the transition.
+     *
+     * @attribute transitionProperty
+     * @type string
+     * @default ''
+     */
+    transitionProperty: ''
+  },
+
+  /**
+   * True if this transition is complete.
+   *
+   * @attribute completed
+   * @type boolean
+   * @default false
+   */
+  completed: false,
+
+  prepare: function(scope, options) {
+    this.boundCompleteFn = this.complete.bind(this, scope);
+    if (this.scopeClass) {
+      scope.classList.add(this.scopeClass);
+    }
+  },
+
+  go: function(scope, options) {
+    this.completed = false;
+    if (this.activeClass) {
+      scope.classList.add(this.activeClass);
+    }
+    scope.addEventListener('transitionend', this.boundCompleteFn, false);
+  },
+
+  setup: function(scope) {
+    if (!scope._pageTransitionStyles) {
+      scope._pageTransitionStyles = {};
+    }
+
+    var name = this.calcStyleName();
+    
+    if (!scope._pageTransitionStyles[name]) {
+      this.installStyleInScope(scope, name);
+      scope._pageTransitionStyles[name] = true;
+    }
+  },
+
+  calcStyleName: function() {
+    return this.id || this.localName;
+  },
+
+  installStyleInScope: function(scope, id) {
+    if (!scope.shadowRoot) {
+      scope.createShadowRoot().innerHTML = '<content></content>';
+    }
+    var root = scope.shadowRoot;
+    var scopeStyle = document.createElement('core-style');
+    root.insertBefore(scopeStyle, root.firstChild);
+    scopeStyle.applyRef(id);
+  },
+
+  complete: function(scope, e) {
+    // TODO(yvonne): hack, need to manage completion better
+    if (e.propertyName !== 'box-shadow' && (!this.transitionProperty || e.propertyName.indexOf(this.transitionProperty) !== -1)) {
+      this.completed = true;
+      this.fire('core-transitionend', this, scope);
+    }
+  },
+
+  // TODO(sorvell): ideally we do this in complete.
+  ensureComplete: function(scope) {
+    scope.removeEventListener('transitionend', this.boundCompleteFn, false);
+    if (this.scopeClass) {
+      scope.classList.remove(this.scopeClass);
+    }
+    if (this.activeClass) {
+      scope.classList.remove(this.activeClass);
+    }
+  }
+
+});
+
+})();
+
+</script>
+</polymer-element>
+
+
+<core-style id="hero-transition">
+  /* Hide heroes that are not currently transitioning */
+  polyfill-next-selector { content: &apos;:host &gt; [animate]:not(.core-selected) [hero]&apos;; }
+  ::content &gt; [animate]:not(.core-selected) /deep/ [hero] {
+    opacity: 0;
+  }
+
+  polyfill-next-selector { content: &apos;:host &gt; .core-selected[animate] [hero]&apos;; }
+  ::content &gt; .core-selected[animate] /deep/ [hero] {
+    opacity: 1;
+    z-index: 10000;
+  }
+
+  polyfill-next-selector { content: &apos;:host &gt; * [hero-p]&apos;; }
+  ::content &gt; * /deep/ [hero-p] {
+    -webkit-transition: box-shadow 100ms ease-out;
+    transition: box-shadow 100ms ease-out;
+  }
+
+  polyfill-next-selector { content: &apos;:host &gt; [animate] [hero-p]&apos;; }
+  ::content &gt; [animate] /deep/ [hero-p] {
+    box-shadow: none !important;
+  }
+</core-style>
+
+
+<!--
+
+`hero-transition` transforms two elements in different pages such that they appear
+to be shared across the pages.
+
+Example:
+
+    <core-animated-pages transition="hero-transition">
+      <section layout horizontal>
+        <div id="div1" flex></div>
+        <div id="div2" flex hero-id="shared" hero></div>
+      </section>
+      <section>
+      <section layout horizontal>
+        <div id="div3" flex hero-id="shared" hero></div>
+        <div id="div4" flex></div>
+      </section>
+      </section>
+    </core-animated-pages>
+
+In the above example, the elements `#div2` and `#div3` shares the same `hero-id`
+attribute and a single element appears to translate and scale smoothly between
+the two positions during a page transition.
+
+Both elements from the source and destination pages must share the same `hero-id`
+and must both contain the `hero` attribute to trigger the transition. The separate
+`hero` attribute allows you to use binding to configure the transition:
+
+Example:
+
+    <core-animated-pages transition="hero-transition">
+      <section layout horizontal>
+        <div id="div1" flex hero-id="shared" hero?="{{selected == 0}}"></div>
+        <div id="div2" flex hero-id="shared" hero?="{{selected == 1}}"></div>
+      </section>
+      <section>
+      <section layout horizontal>
+        <div id="div3" flex hero-id="shared" hero></div>
+      </section>
+      </section>
+    </core-animated-pages>
+
+In the above example, either `#div1` or `#div2` scales to `#div3` during a page transition,
+depending on the value of `selected`.
+
+Because it is common to share elements with different `border-radius` values, by default
+this transition will also animate the `border-radius` property.
+
+You can configure the duration of the hero transition with the global variable
+`CoreStyle.g.transitions.heroDuration`.
+
+@class hero-transition
+@extends core-transition-pages
+@status beta
+@homepage github.io
+-->
+<polymer-element name="hero-transition" extends="core-transition-pages" assetpath="../bower_components/core-animated-pages/transitions/">
+<script>
+(function() {
+
+  var webkitStyles = '-webkit-transition' in document.documentElement.style
+  var TRANSITION_CSSNAME = webkitStyles ? '-webkit-transition' : 'transition';
+  var TRANSFORM_CSSNAME = webkitStyles ? '-webkit-transform' : 'transform';
+  var TRANSITION_NAME = webkitStyles ? 'webkitTransition' : 'transition';
+  var TRANSFORM_NAME = webkitStyles ? 'webkitTransform' : 'transform';
+
+  var hasShadowDOMPolyfill = window.ShadowDOMPolyfill;
+
+  Polymer('hero-transition',{
+
+    go: function(scope, options) {
+      var props = [
+        'border-radius',
+        'width',
+        'height',
+        TRANSFORM_CSSNAME
+      ];
+
+      var duration = options && options.duration || 
+          (CoreStyle.g.transitions.heroDuration || 
+          CoreStyle.g.transitions.duration);
+
+      scope._heroes.forEach(function(h) {
+        var d = h.h0.hasAttribute('hero-delayed') ? CoreStyle.g.transitions.heroDelay : '';
+        var wt = [];
+        props.forEach(function(p) {
+          wt.push(p + ' ' + duration + ' ' + options.easing + ' ' + d);
+        });
+
+        h.h1.style[TRANSITION_NAME] = wt.join(', ');
+        h.h1.style.borderRadius = h.r1;
+        h.h1.style[TRANSFORM_NAME] = '';
+      });
+
+      this.super(arguments);
+
+      if (!scope._heroes.length) {
+        this.completed = true;
+      }
+    },
+
+    prepare: function(scope, options) {
+      this.super(arguments);
+      var src = options.src, dst = options.dst;
+
+      if (scope._heroes && scope._heroes.length) {
+        this.ensureComplete(scope);
+      } else {
+        scope._heroes = [];
+      }
+
+      // FIXME(yvonne): basic support for nested pages.
+      // Look for heroes in the light DOM and one level of shadow DOM of the src and dst,
+      // and also in src.selectedItem or dst.selectedItem, then transform the dst hero to src
+      var ss = '[hero]';
+      var h$ = this.findAllInShadows(src, ss);
+      if (src.selectedItem) {
+        hs$ = this.findAllInShadows(src.selectedItem, ss);
+        hsa$ = [];
+        // De-duplicate items
+        Array.prototype.forEach.call(hs$, function(hs) {
+          if (h$.indexOf(hs) === -1) {
+            hsa$.push(hs);
+          }
+        })
+        h$ = h$.concat(hsa$);
+      }
+
+      for (var i=0, h0; h0=h$[i]; i++) {
+        var v = h0.getAttribute('hero-id');
+        var ds = '[hero][hero-id="' + v + '"]';
+        var h1 = this.findInShadows(dst, ds);
+
+        if (!h1 && dst.selectedItem) {
+          h1 = this.findInShadows(dst.selectedItem, ds);
+        }
+
+        // console.log('src', src);
+        // console.log('dst', dst, dst.selectedItem);
+        // console.log(v, h0, h1);
+        if (v && h1) {
+          var c0 = getComputedStyle(h0);
+          var c1 = getComputedStyle(h1);
+          var h = {
+            h0: h0,
+            b0: h0.getBoundingClientRect(),
+            r0: c0.borderRadius,
+            h1: h1,
+            b1: h1.getBoundingClientRect(),
+            r1: c1.borderRadius
+          };
+
+          var dl = h.b0.left - h.b1.left;
+          var dt = h.b0.top - h.b1.top;
+          var sw = h.b0.width / h.b1.width;
+          var sh = h.b0.height / h.b1.height;
+
+          // h.scaley = h.h0.hasAttribute('scaley');
+          // if (!h.scaley && (sw !== 1 || sh !== 1)) {
+          //   sw = sh = 1;
+          //   h.h1.style.width = h.b0.width + 'px';
+          //   h.h1.style.height = h.b0.height + 'px';
+          // }
+
+          // Also animate the border-radius for the circle-to-square transition
+          if (h.r0 !== h.r1) {
+            h.h1.style.borderRadius = h.r0;
+          }
+
+          // console.log(h);
+
+          h.h1.style[TRANSFORM_NAME] = 'translate(' + dl + 'px,' + dt + 'px)' + ' scale(' + sw + ',' + sh + ')';
+          h.h1.style[TRANSFORM_NAME + 'Origin'] = '0 0';
+
+          scope._heroes.push(h);
+        }
+      }
+
+    },
+
+    // carefully look into ::shadow with polyfill specific hack
+    findInShadows: function(node, selector) {
+      return node.querySelector(selector) || (hasShadowDOMPolyfill ? 
+          Platform.queryAllShadows(node, selector) :
+          node.querySelector('::shadow ' + selector));
+    },
+
+    findAllInShadows: function(node, selector) {
+      if (hasShadowDOMPolyfill) {
+        var nodes = node.querySelectorAll(selector).array();
+        var shadowNodes = Platform.queryAllShadows(node, selector, true);
+        return nodes.concat(shadowNodes);
+      } else {
+        return node.querySelectorAll(selector).array().concat(node.shadowRoot ? node.shadowRoot.querySelectorAll(selector).array() : []);
+      }
+    },
+
+    ensureComplete: function(scope) {
+      this.super(arguments);
+      if (scope._heroes) {
+        scope._heroes.forEach(function(h) {
+          h.h1.style[TRANSITION_NAME] = '';
+          h.h1.style[TRANSFORM_NAME] = '';
+        });
+        scope._heroes = [];
+      }
+    },
+
+    complete: function(scope, e) {
+      // if (e.propertyName === TRANSFORM_CSSNAME) {
+        var done = false;
+        scope._heroes.forEach(function(h) {
+          if (h.h1 === e.path[0]) {
+            done = true;
+          }
+        });
+
+        if (done) {
+          this.super(arguments);
+        }
+      // }
+    }
+
+  });
+
+})();
+</script>
+</polymer-element>
+
+<hero-transition id="hero-transition"></hero-transition>
+
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+
+
+<core-style id="cross-fade">
+  polyfill-next-selector { content: &apos;:host &gt; * [cross-fade]&apos;; }
+  ::content &gt; * /deep/ [cross-fade] {
+    -webkit-transition: opacity {{g.transitions.xfadeDuration || g.transitions.duration}} cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity {{g.transitions.xfadeDuration || g.transitions.duration}} cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  polyfill-next-selector { content: &apos;:host &gt; * [cross-fade][bg]&apos;; }
+  ::content &gt; * /deep/ [cross-fade][bg] {
+    -webkit-transition: background-color {{g.transitions.xfadeDuration || g.transitions.duration}} cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color {{g.transitions.xfadeDuration || g.transitions.duration}} cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  polyfill-next-selector { content: &apos;:host &gt; * [cross-fade][hero-p]&apos;; }
+  ::content &gt; * /deep/ [cross-fade][hero-p] {
+    -webkit-transition: background-color {{g.transitions.xfadeDuration || g.transitions.duration}} cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color {{g.transitions.xfadeDuration || g.transitions.duration}} cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  polyfill-next-selector { content: &apos;:host &gt; .core-selected [cross-fade]&apos;; }
+  ::content &gt; .core-selected /deep/ [cross-fade] {
+    opacity: 1;
+  }
+
+  polyfill-next-selector { content: &apos;:host &gt; [animate]:not(.core-selected) [cross-fade]:not([hero-p]):not([bg])&apos;; }
+  ::content &gt; [animate]:not(.core-selected) /deep/ [cross-fade]:not([hero-p]):not([bg]) {
+    opacity: 0;
+  }
+
+  polyfill-next-selector { content: &apos;:host &gt; [animate]:not(.core-selected) [cross-fade][bg]&apos;; }
+  ::content &gt; [animate]:not(.core-selected) /deep/ [cross-fade][bg] {
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  polyfill-next-selector { content: &apos;:host &gt; [animate]:not(.core-selected) [cross-fade][hero-p]&apos;; }
+  ::content &gt; [animate]:not(.core-selected) /deep/ [cross-fade][hero-p] {
+    background-color: rgba(0, 0, 0, 0);
+  }
+</core-style>
+
+<core-style id="cross-fade-delayed">
+  polyfill-next-selector { content: &apos;:host &gt; * [cross-fade-delayed]&apos;; }
+  ::content &gt; * /deep/ [cross-fade-delayed] {
+    -webkit-transition: opacity {{g.transitions.xfadeDuration || g.transitions.duration}} ease-out;
+    transition: opacity {{g.transitions.xfadeDuration || g.transitions.duration}} ease-out;
+  }
+
+  polyfill-next-selector { content: &apos;:host &gt; .core-selected [cross-fade-delayed]&apos;; }
+  ::content &gt; .core-selected /deep/ [cross-fade-delayed] {
+    -webkit-transition: opacity {{g.transitions.xfadeDuration || g.transitions.duration}} ease-out {{g.transitions.xfadeDelay || g.transitions.xfadeDuration || g.transitions.duration}};
+    transition: opacity {{g.transitions.xfadeDuration || g.transitions.duration}} ease-out {{g.transitions.xfadeDelay || g.transitions.xfadeDuration || g.transitions.duration}};
+  }
+
+  polyfill-next-selector { content: &apos;:host &gt; [animate]:not(.core-selected) [cross-fade-delayed]&apos;; }
+  ::content &gt; [animate]:not(.core-selected) /deep/ [cross-fade-delayed] {
+    opacity: 0;
+  }
+
+  polyfill-next-selector { content: &apos;:host &gt; .core-selected [cross-fade-delayed]&apos;; }
+  ::content &gt; .core-selected /deep/ [cross-fade-delayed] {
+    opacity: 1;
+  }
+
+</core-style>
+
+<core-style id="cross-fade-all">
+  /* cross-fade-all: cross fade everything except for heroes and their parents */
+  polyfill-next-selector { content: &apos;:host(.cross-fade-all) &gt; * *:not([hero]):not([hero-p]):not([cross-fade])&apos;; }
+  :host(.cross-fade-all) ::content &gt; * /deep/ *:not([hero]):not([hero-p]):not([cross-fade]) {
+    -webkit-transition: opacity {{g.transitions.xfadeDuration || g.transitions.duration}} ease-out;
+    transition: opacity {{g.transitions.xfadeDuration || g.transitions.duration}} ease-out;
+  }
+
+  polyfill-next-selector { content: &apos;:host(.cross-fade-all) &gt; [animate]:not(.core-selected) *:not([hero]):not([hero-p]):not([cross-fade])&apos;; }
+  :host(.cross-fade-all) ::content &gt; [animate]:not(.core-selected) /deep/ *:not([hero]):not([hero-p]):not([cross-fade]) {
+    opacity: 0;
+  }
+
+  polyfill-next-selector { content: &apos;:host(.cross-fade-all) &gt; .core-selected *:not([hero])&apos;; }
+  .host(.cross-fade-all) ::content &gt; .core-selected /deep/ * {
+    opacity: 1;
+  }
+
+  /* Only background-color is allowed for the hero&apos;s parents, no opacity transitions */
+  polyfill-next-selector { content: &apos;:host(.cross-fade-all) &gt; * [hero-p]&apos;; }
+  :host(.cross-fade-all) ::content &gt; * /deep/ [hero-p] {
+    -webkit-transition: background-color {{g.transitions.xfadeDuration || g.transitions.duration}} ease-out;
+    transition: background-color {{g.transitions.xfadeDuration || g.transitions.duration}} ease-out;
+    opacity: 1;
+  }
+
+  polyfill-next-selector { content: &apos;:host(.cross-fade-all) &gt; [animate]:not(.core-selected) [hero-p]&apos;; }
+  :host(.cross-fade-all) ::content &gt; [animate]:not(.core-selected) /deep/ [hero-p] {
+    background-color: rgba(0, 0, 0, 0);
+  }
+</core-style>
+
+<!--
+
+`cross-fade` fades out elements in the outgoing page and fades in elements in the
+incoming page during a page transition. You can configure the duration of the
+transition with the global variable `CoreStyle.g.transitions.xfadeDuration`.
+
+Example:
+
+    <core-animated-pages transition="cross-fade">
+      <section>
+        <div id="div1" cross-fade></div>
+      </section>
+      <section>
+        <div id="div2" cross-fade bg>
+          <div id="div3" cross-fade></div>
+          <div id="div4"></div>
+        </div>
+      </section>
+    </core-animated-pages>
+
+In the above example, `#div1` and `#div3` has the `cross-fade` attribute. `#div1`
+will fade out and `#div3` will fade in with opacity transitions when the page switches
+from 0 to 1. Sometimes, you may want to only fade the background color of an element
+but not its children, and you can use the `bg` attribute along with the `#div1`
+attribute as in `#div2`.
+
+@class cross-fade
+@extends core-transition-pages
+@status beta
+@homepage github.io
+
+-->
+
+<!--
+
+`cross-fade-delayed` performs a cross-fade after some delay, either specified in
+the global variable `CoreStyle.g.transitions.xfadeDelay` or the duration of the
+transition.
+
+Example:
+
+    <core-animated-pages transition="hero-transition cross-fade-delayed">
+      <section>
+        <div id="div1" hero-id hero></div>
+      </section>
+      <section>
+        <div id="div2" hero-id hero>
+          <div id="div3" cross-fade-delayed></div>
+        </div>
+      </section>
+    </core-animated-pages>
+
+In the above example, `#div3` fades in after the hero transition from `#div1` to
+`#div2` completes.
+
+@class cross-fade-delayed
+@extends core-transition-pages
+@status beta
+@homepage github.io
+
+-->
+
+<core-transition-pages id="cross-fade"></core-transition-pages>
+<core-transition-pages id="cross-fade-delayed"></core-transition-pages>
+<core-transition-pages id="cross-fade-all" scopeclass="cross-fade-all"></core-transition-pages>
+
+
+<!--
+
+`core-animated-pages` selects one of its children "pages" to show and runs a transition
+when switching between them. The transitions are designed to be pluggable, and can
+accept any object that is an instance of a `core-transition-pages`. Transitions to run
+are specified in the `transitions` attribute as a space-delimited string of `id`s of
+transition elements. Several transitions are available with `core-animated-pages` by
+default, including `hero-transition`, `cross-fade`, and `tile-cascade`.
+
+Example:
+
+    <style>
+      #hero1 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 300px;
+        height: 300px;
+        background-color: orange;
+      }
+      #hero2 {
+        position: absolute;
+        top: 200px;
+        left: 300px;
+        width: 300px;
+        height: 300px;
+        background-color: orange;
+      }
+      #bottom1, #bottom2 {
+        position: absolute;
+        bottom: 0;
+        top: 0;
+        left: 0;
+        height: 50px;
+      }
+      #bottom1 {
+        background-color: blue;
+      }
+      #bottom2 {
+        background-color: green;
+      }
+    </style>
+    // hero-transition and cross-fade are declared elsewhere
+    <core-animated-pages transitions="hero-transition cross-fade">
+      <section id="page1">
+        <div id="hero1" hero-id="hero" hero></div>
+        <div id="bottom1" cross-fade></div>
+      </section>
+      <section id="page2">
+        <div id="hero2" hero-id="hero" hero></div>
+        <div id="bottom2" cross-fade></div>
+      </section>
+    </core-animated-pages>
+
+In the above example, two transitions (`hero-transition` and `cross-fade`) are run when switching
+between `page1` and `page2`. `hero-transition` transforms elements with the same `hero-id` such
+that they appear to be shared across different pages. `cross-fade` fades out the elements marked
+`cross-fade` in the outgoing page, and fades in those in the incoming page. See the individual
+transition's documentation for specific details.
+
+Finding elements to transition
+------------------------------
+
+In general, a transition is applied to elements marked with a certain attribute. For example,
+`hero-transition` applies the transition on elements with the `hero` and `hero-id` attribute.
+Among the transitions included with `core-animated-pages`, script-based transitions such as
+`hero-transition` generally look for elements up to one level of shadowRoot from the
+`core-animated-pages` element, and CSS-based transitions such as `cross-fade` look for elements
+within any shadowRoot within the `core-animated-pages` element. This means you can use 
+custom elements as pages and mark elements in their shadowRoots as heroes, or mark 
+elements in deeper shadowRoots with other transitions.
+
+Example:
+
+    <polymer-element name="x-el" noscript>
+    <template>
+      <style>
+        #hero {
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 50px;
+          height: 300px;
+          background-color: blue;
+        }
+      </style>
+      <div id="hero" hero-id="bar" hero></div>
+    </template>
+    </polymer-element>
+
+    <polymer-element name="x-page-1" noscript>
+    <template>
+      <style>
+        #hero1 {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 300px;
+          height: 300px;
+          background-color: orange;
+        }
+      </style>
+      <div id="hero1" hero-id="foo" hero></div>
+      <div id="hero2" hero-id="bar" hero></div>
+    </template>
+    </polymer-element>
+
+    <polymer-element name="x-page-2" noscript>
+    <template>
+      <style>
+        #hero1 {
+          position: absolute;
+          top: 200px;
+          left: 300px;
+          width: 300px;
+          height: 300px;
+          background-color: orange;
+        }
+        #hero2 {
+          background-color: blue;
+          height: 150px;
+          width: 400px;
+        }
+      </style>
+      // The below element is one level of shadow from the core-animated-pages and will
+      // be transitioned.
+      <div id="hero1" hero-id="foo" hero></div>
+      // The below element contains a hero inside its shadowRoot making it two levels away
+      // from the core-animated-pages, and will not be transitioned.
+      <x-el></x-el>
+    </template>
+    </polymer-element>
+
+    <core-animated-pages transitions="hero-transition">
+      <x-page-1></x-page-1>
+      <x-page-2></x-page-2>
+    </core-animated-pages>
+
+Note that the container element of the page does not participate in the transition.
+
+    // This does not work
+    <core-animated-pages transitions="cross-fade">
+      <section cross-fade></section>
+      <section cross-fade></section>
+    </core-animated-pages>
+
+    // This works
+    <core-animated-pages transitions="cross-fade">
+      <section>
+        <div cross-fade></div>
+      </section>
+      <section>
+        <div cross-fade></div>
+      </section>
+    </core-animated-pages>
+
+Dynamically setting up transitions
+----------------------------------
+
+An easy way to set up transitions dynamically is to use property binding on
+the transition attributes. 
+
+Example:
+
+    <core-animated-pages selected="{{selected}}">
+      <section id="page1">
+        <div hero-id="hero" hero></div>
+      </section>
+      <section id="page2">
+        <div id="foo" hero-id="hero" hero?="{{selected === 1 || selected === 0}}" cross-fade="{{selected === 2}}"></div>
+      </section>
+      <section id="page3">
+      </section>
+    </core-animated-pages>
+
+In the above example, the "foo" element only behaves as a hero element if transitioning between
+`#page1` and `#page2`. It gets cross-faded when transition to or from `#page3`.
+
+Nesting pages
+-------------
+
+It is possible to nest core-animated-pages elements for organization. Excessive nesting is
+not encouraged, however, since it makes setting up the transition more complex.
+
+To nest core-animated-pages, the page containing the nested core-animated-pages element should
+have a `selectedItem` property bound to the `selectedItem` property of the nested element. This
+will allow the outer core-animated-pages to know which nested page it is actually transitioning
+to.
+
+Example:
+
+    <polymer-element name="nested-page" attributes="selectedItem">
+    <template>
+      <core-animated-pages selectedItem="{{selectedItem}}">
+        ...
+      </core-animated-pages>
+    </template>
+    </polymer-element>
+
+    <core-animated-pages>
+      <section id="page1"></section>
+      <nested-page id="page2"></nested-page>
+    </core-animated-pages>
+
+@element core-animated-pages
+@extends core-selector
+@status beta
+@homepage github.io
+-->
+<!--
+Fired before a page transition occurs. Both pages involved in the transition are visible when
+this event fires. This is useful if there is something the client needs to do when a page becomes
+visible.
+
+@event core-animated-pages-transition-prepare
+-->
+<!--
+Fired when a page transition completes.
+
+@event core-animated-pages-transition-end
+-->
+<polymer-element name="core-animated-pages" extends="core-selector" notap="" attributes="transitions" assetpath="../bower_components/core-animated-pages/">
+
+<template>
+
+  <style>/*
+ * @license
+ * Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+ * This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+ * The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+ * The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+ * Code distributed by Google as part of the polymer project is also
+ * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+ */
+
+:host {
+  display: block;
+  position: relative;
+}
+
+polyfill-next-selector { content: ':host > *'; }
+::content > * {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+polyfill-next-selector { content: ':host > *:not(.core-selected):not([animate])'; }
+::content > *:not(.core-selected):not([animate]) {
+  display: none !important;
+}
+</style>
+
+  <shadow></shadow>
+
+</template>
+
+<script>
+
+  Polymer('core-animated-pages',{
+
+    eventDelegates: {
+      'core-transitionend': 'transitionEnd'
+    },
+
+    /**
+     * A space-delimited string of transitions to use when switching between pages in this element.
+     * The strings are `id`s of `core-transition-pages` elements included elsewhere. See the
+     * individual transition's document for specific details.
+     *
+     * @attribute transitions
+     * @type string
+     * @default ''
+     */
+    transitions: '',
+
+    selected: 0,
+
+    /**
+     * The last page selected. This property is useful to dynamically set transitions based
+     * on incoming and outgoing pages.
+     *
+     * @attribute lastSelected
+     * @type Object
+     * @default null
+     */
+    lastSelected: null,
+
+    registerCallback: function() {
+      this.tmeta = document.createElement('core-transition');
+    },
+
+    created: function() {
+      this._transitions = [];
+      this.transitioning = [];
+    },
+
+    transitionsChanged: function() {
+      this._transitions = this.transitions.split(' ');
+    },
+
+    _transitionsChanged: function(old) {
+      if (this._transitionElements) {
+        this._transitionElements.forEach(function(t) {
+          t.teardown(this);
+        }, this);
+      }
+      this._transitionElements = [];
+      this._transitions.forEach(function(transitionId) {
+        var t = this.getTransition(transitionId);
+        if (t) {
+          this._transitionElements.push(t);
+          t.setup(this);
+        }
+      }, this);
+    },
+
+    getTransition: function(transitionId) {
+      return this.tmeta.byId(transitionId);
+    },
+
+    selectionSelect: function(e, detail) {
+      this.updateSelectedItem();
+      // Wait to call applySelection when we run the transition
+    },
+
+    applyTransition: function(src, dst) {
+      if (this.animating) {
+        this.cancelAsync(this.animating);
+        this.animating = null;
+      }
+
+      Platform.flush();
+
+      if (this.transitioning.indexOf(src) === -1) {
+        this.transitioning.push(src);
+      }
+      if (this.transitioning.indexOf(dst) === -1) {
+        this.transitioning.push(dst);
+      }
+      // force src, dst to display 
+      src.setAttribute('animate', '');
+      dst.setAttribute('animate', '');
+      //
+      var options = {
+        src: src,
+        dst: dst,
+        easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+      }
+
+      // fire an event so clients have a chance to do something when the
+      // new page becomes visible but before it draws.
+      this.fire('core-animated-pages-transition-prepare');
+
+      //
+      // prepare transition
+      this._transitionElements.forEach(function(transition) {
+        transition.prepare(this, options);
+      }, this);
+      //
+      // force layout!
+      src.offsetTop;
+
+      //
+      // apply selection
+      this.applySelection(dst, true);
+      this.applySelection(src, false);
+      //
+      // start transition
+      this._transitionElements.forEach(function(transition) {
+        transition.go(this, options);
+      }, this);
+
+      if (!this._transitionElements.length) {
+        this.complete();
+      } else {
+        this.animating = this.async(this.complete.bind(this), null, 5000);
+      }
+    },
+
+    complete: function() {
+      if (this.animating) {
+        this.cancelAsync(this.animating);
+        this.animating = null;
+      }
+
+      this.transitioning.forEach(function(t) {
+        t.removeAttribute('animate');
+      });
+      this.transitioning = [];
+
+      this._transitionElements.forEach(function(transition) {
+        transition.ensureComplete(this);
+      }, this);
+
+      this.fire('core-animated-pages-transition-end');
+    },
+    
+    transitionEnd: function(e) {
+      if (this.transitioning.length) {
+        var completed = true;
+        this._transitionElements.forEach(function(transition) {
+          if (!transition.completed) {
+            completed = false;
+          }
+        });
+        if (completed) {
+          this.job('transitionWatch', function() {
+            this.complete();
+          }, 100);
+        }
+      }
+    },
+
+    selectedChanged: function(old) {
+      this.lastSelected = old;
+      this.super(arguments);
+    },
+
+    selectedItemChanged: function(oldItem) {
+      this.super(arguments);
+
+      if (!oldItem) {
+        this.applySelection(this.selectedItem, true);
+        return;
+      }
+
+      if (this.hasAttribute('no-transition') || !this._transitionElements || !this._transitionElements.length) {
+        this.applySelection(oldItem, false);
+        this.applySelection(this.selectedItem, true);
+        return;
+      }
+
+      if (oldItem && this.selectedItem) {
+        // TODO(sorvell): allow bindings to update first?
+        var self = this;
+        Platform.flush();
+        Platform.endOfMicrotask(function() {
+          self.applyTransition(oldItem, self.selectedItem);
+        });
+      }
+    }
+
+  });
+
+</script>
+
+</polymer-element>
+
+
+
+
+<polymer-element attributes="messages" class="card" layout="" name="chat-card" vertical="" assetpath="../bower_components/dominobase-elements/cards/">
+  <template>
+    <style>:host .tile {
+  padding: 8px 0; }
+:host .actions {
+  font-size: 1em; }
+</style>
+    <core-list data="{{messages}}" flex="" height="{{messages.length}}">
+      <template>
+        <div class="tile">
+          <div class="avatar" style="url(&apos;{{model.author.avatar}}&apos;)"></div>
+          <p>{{model.body}}</p>
+        </div>
+      </template>
+    </core-list>
+    <core-toolbar class="actions">
+      <paper-input flex="" label="Write a message..."></paper-input>
+      <paper-menu-button icon="hardware:keyboard-alt">
+        <!-- %core-header-panel -->
+        <!-- %core-toolbar -->
+        <!-- %paper-tabs -->
+        <!-- %paper-tab -->
+        <!-- %core-icon=(icon="history") -->
+        <!-- %paper-tab -->
+        <!-- %core-icon=(icon="hardware:keyboard-alt") -->
+        <!-- %paper-tab -->
+        <!-- %core-icon=(icon="maps:terrain") -->
+        <!-- %paper-tab -->
+        <!-- %core-icon=(icon="work") -->
+        <!-- %paper-tab -->
+        <!-- %core-icon=(icon="maps:directions-car") -->
+        <!-- %paper-tab -->
+        <!-- %core-icon=(icon="polymer") -->
+        <core-animated-pages fit="" transitions="slide-from-right">
+          <section id="history">
+            ultimos
+          </section>
+          <section id="people">
+            people
+          </section>
+          <section id="nature">
+            nature
+          </section>
+          <section id="objects">
+            objects
+          </section>
+          <section id="places">
+            places
+          </section>
+          <section id="symbols">
+            symbols
+          </section>
+        </core-animated-pages>
+      </paper-menu-button>
+      <paper-icon-button icon="send"></paper-icon-button>
+    </core-toolbar>
+  </template>
+<script>Polymer('chat-card');</script></polymer-element>
 
 
 <!-- Copyright (C) 2014 Erik Ringsmuth - MIT license -->

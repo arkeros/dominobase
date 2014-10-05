@@ -6,16 +6,26 @@ body /deep/ core-toolbar {
   color: white; }
 body /deep/ .card {
   position: relative;
-  border-radius: 2px;
-  margin: 8px 0 0 8px;
-  background: white;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); }
+  border-radius: 4px;
+  margin: 16px 0 0 16px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  background: #fafafa;
+  color: #424242;
+  overflow: hidden; }
   body /deep/ .card .title {
-    padding: 16px;
-    font-size: 24px; }
+    padding: 32px;
+    font-size: 24px;
+    font-weight: 500; }
   body /deep/ .card .text {
     margin: 0;
     padding: 16px; }
+  body /deep/ .card > paper-input {
+    margin-left: 32px;
+    width: calc(100% - 32px); }
+  body /deep/ .card /deep/ core-toolbar {
+    border-top: 1px solid #e0e0e0;
+    background: transparent;
+    color: inherit; }
 body /deep/ .hero {
   text-align: center;
   background-size: cover;
