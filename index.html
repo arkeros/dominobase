@@ -15615,8 +15615,11 @@ when a user explicitely signs out via the google-signin element.
     <style>:host {
   display: block;
   font-family: "RobotoDraft", Helvetica, Arial, sans-serif; }
-  :host #appbar .actions {
-    display: inline-block; }
+  :host #appbar {
+    color: white;
+    background: #5677fc; }
+    :host #appbar .actions {
+      display: inline-block; }
 
 [drawer] {
   background-color: #fff;
@@ -15681,35 +15684,9 @@ when a user explicitely signs out via the google-signin element.
         <content select="[navigation], nav"></content>
         <content class="footer" select="footer"></content>
       </div>
-      <template if="{{ scrollHeader }}">
-        <core-scroll-header-panel id="headerPanel" main="" mode="{{mode}}">
-          <core-toolbar id="appbar">
-            <core-icon-button icon="menu" id="menuButton" on-tap="{{togglePanel}}"></core-icon-button>
-            <div flex="" id="title">
-              Anaconda
-              <content select="[title]"></content>
-            </div>
-            <content class="actions" select="[actions]"></content>
-            <paper-menu-button halign="right" icon="more-vert">
-              <paper-item label="Refresh"></paper-item>
-              <paper-item label="Send feedback">
-                <a href="/contact" is="pushstate-anchor"></a>
-              </paper-item>
-              <paper-item label="Settings"></paper-item>
-              <paper-item label="Help">
-                <a href="/help" is="pushstate-anchor"></a>
-              </paper-item>
-              <!-- %div Sign Out -->
-            </paper-menu-button>
-          </core-toolbar>
-          <div id="content" layout="" vertical="">
-            <content></content>
-          </div>
-        </core-scroll-header-panel>
-      </template>
-      <template if="{{ !scrollHeader }}">
-        <core-header-panel id="headerPanel" main="" mode="{{mode}}">
-          <core-toolbar id="appbar">
+      <core-scroll-header-panel condenses="" id="headerPanel" main="">
+        <core-toolbar class="{{mode}}" id="appbar">
+          <template if="{{ mode != &apos;tall&apos; }}">
             <core-icon-button icon="menu" id="menuButton" on-tap="{{togglePanel}}"></core-icon-button>
             <div flex="" id="title">
               <content select="[title]"></content>
@@ -15726,12 +15703,31 @@ when a user explicitely signs out via the google-signin element.
               </paper-item>
               <!-- %div Sign Out -->
             </paper-menu-button>
-          </core-toolbar>
-          <div id="content" layout="" vertical="">
-            <content></content>
-          </div>
-        </core-header-panel>
-      </template>
+          </template>
+          <template if="{{ mode == &apos;tall&apos; }}">
+            <core-icon-button icon="menu" id="menuButton" on-tap="{{togglePanel}}"></core-icon-button>
+            <div class="clip" flex=""></div>
+            <content class="actions" select="[actions]"></content>
+            <paper-menu-button halign="right" icon="more-vert">
+              <paper-item label="Refresh"></paper-item>
+              <paper-item label="Send feedback">
+                <a href="/contact" is="pushstate-anchor"></a>
+              </paper-item>
+              <paper-item label="Settings"></paper-item>
+              <paper-item label="Help">
+                <a href="/help" is="pushstate-anchor"></a>
+              </paper-item>
+              <!-- %div Sign Out -->
+            </paper-menu-button>
+            <div class="bottom indent" id="title">
+              <content select="[title]"></content>
+            </div>
+          </template>
+        </core-toolbar>
+        <div class="content" layout="" vertical="">
+          <content></content>
+        </div>
+      </core-scroll-header-panel>
     </core-drawer-panel>
   </template>
 <script>Polymer('material-layout');</script></polymer-element>
@@ -15740,9 +15736,9 @@ when a user explicitely signs out via the google-signin element.
 
 
 
-<polymer-element attributes="mode scrollHeader" name="base-layout" assetpath="../bower_components/dominobase-elements/layouts/">
+<polymer-element attributes="mode" name="base-layout" assetpath="../bower_components/dominobase-elements/layouts/">
   <template>
-    <material-layout mode="{{mode}}" scrollheader="{{scrollHeader}}">
+    <material-layout mode="{{mode}}">
       <core-menu navigation="" selected="2">
         <paper-item icon="home" label="Home">
           <a href="/" is="pushstate-anchor"></a>
@@ -15774,6 +15770,9 @@ when a user explicitely signs out via the google-signin element.
         &amp;
         <a href="/terms" is="pushstate-anchor">Terms</a>
       </footer>
+      <p>
+        {{scrollHeader}}
+      </p>
       <content></content>
     </material-layout>
   </template>
@@ -17793,8 +17792,62 @@ you should ensure that the `aria-label` attribute is set.
 
 <polymer-element attributes="slug" name="player-page" assetpath="../bower_components/dominobase-elements/pages/">
   <template>
-    <base-layout mode="waterfall-tall" scrollheader="">
+    <style>
+      base-layout /deep/ #headerBg {
+          background-image: url(http://cdn.wonderfulengineering.com/wp-content/uploads/2014/04/space-wallpapers-5.jpg);
+      }
+      
+      base-layout /deep/  #condensedHeaderBg {
+        background-color: #f4b400;
+      }
+      
+      base-layout /deep/ #appbar {
+        background-color: transparent;
+      }
+    </style>
+    <base-layout mode="tall">
       <span class="bottom" flex="" title="">{{slug}}</span>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
+      <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
       <p class="lead">DominoBase is the best place to play dominoes with friends, co-workers, classmates, and complete strangers. Over six million people use DominoBase to build amazing things together.</p>
     </base-layout>
   </template>
