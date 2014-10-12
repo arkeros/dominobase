@@ -40294,7 +40294,7 @@ polyfill-next-selector { content: ':host > *:not(.core-selected):not([animate])'
       });
     },
     connect: function() {
-      this.user.xmpp = new scope.Strophe.Connection('http://178.62.195.197:7070/http-bind');
+      this.user.xmpp = new scope.Strophe.Connection('//178.62.195.197:7070/http-bind');
       this.user.xmpp.connect(this.user.email, this.user.oauth.token);
       return scope.console.log(this.user);
     }
