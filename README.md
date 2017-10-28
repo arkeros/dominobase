@@ -1,6 +1,8 @@
 [![Stories in Ready](https://badge.waffle.io/arkeros/dominobase.png?label=ready&title=Ready)](https://waffle.io/arkeros/dominobase)
 ## [DominoBase](http://arkeros.github.io/dominobase) – OFFICIAL DominoBase Client Web App
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/arkeros/dominobase.svg)](https://greenkeeper.io/)
+
 
 bower link dominoes-node
 bower install --save jquer && grunt wiredep
